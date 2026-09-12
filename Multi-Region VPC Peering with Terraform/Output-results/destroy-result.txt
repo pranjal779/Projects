@@ -1,0 +1,1398 @@
+ terraform destroy --auto-approve
+data.aws_ami.primary_ami: Reading...
+data.aws_availability_zones.primary: Reading...
+aws_vpc.primary_vpc: Refreshing state... [id=vpc-0c4a0b4417ae49fda]
+data.aws_availability_zones.third: Reading...
+data.aws_ami.third_ami: Reading...
+aws_vpc.third_vpc: Refreshing state... [id=vpc-092719fb456ebb56c]
+data.aws_availability_zones.secondary: Reading...
+data.aws_ami.secondary_ami: Reading...
+aws_vpc.secondary_vpc: Refreshing state... [id=vpc-0b73bb3805e9c88d9]
+data.aws_availability_zones.primary: Read complete after 1s [id=us-east-1]
+data.aws_availability_zones.third: Read complete after 1s [id=us-east-2]
+data.aws_availability_zones.secondary: Read complete after 1s [id=us-west-1]
+data.aws_ami.primary_ami: Read complete after 1s [id=ami-025d99823a4caad37]
+data.aws_ami.secondary_ami: Read complete after 1s [id=ami-0bc53423cd57b48b7]
+data.aws_ami.third_ami: Read complete after 1s [id=ami-00adec9774170bad2]
+aws_internet_gateway.primary_igw: Refreshing state... [id=igw-055fef54561689db1]
+aws_subnet.primary_subnet: Refreshing state... [id=subnet-001c9b62f978140ae]
+aws_security_group.primary_sg: Refreshing state... [id=sg-013e54c69dd132fa5]
+aws_internet_gateway.third_igw: Refreshing state... [id=igw-0a83754a03cd13304]
+aws_subnet.third_subnet: Refreshing state... [id=subnet-0b87a78ddfde0f111]
+aws_vpc_peering_connection.third_to_primary: Refreshing state... [id=pcx-0ba7c9a61403a4da7]
+aws_security_group.third_sg: Refreshing state... [id=sg-0b378d26deb7843a5]
+aws_internet_gateway.secondary_igw: Refreshing state... [id=igw-0b43996aab6c169b4]
+aws_vpc_peering_connection.primary_to_secondary: Refreshing state... [id=pcx-0273d9c7ad09bc850]
+aws_security_group.secondary_sg: Refreshing state... [id=sg-0d544e50491f04cfa]
+aws_vpc_peering_connection.secondary_to_third: Refreshing state... [id=pcx-0226a5b7959290ca6]
+aws_subnet.secondary_subnet: Refreshing state... [id=subnet-0bdb281bb4a3d8175]
+aws_route_table.primary_rt: Refreshing state... [id=rtb-099db33a2413a79e9]
+aws_vpc_peering_connection_accepter.primary_accept_third: Refreshing state... [id=pcx-0ba7c9a61403a4da7]
+aws_route_table.third_rt: Refreshing state... [id=rtb-011d7f316f3427232]
+aws_route_table.secondary_rt: Refreshing state... [id=rtb-092fbd25ea42c325d]
+aws_vpc_peering_connection_accepter.secondary_region_accepter: Refreshing state... [id=pcx-0273d9c7ad09bc850]
+aws_instance.third_instance: Refreshing state... [id=i-0fa13ee4b565b6c09]
+aws_vpc_peering_connection_accepter.third_accept_secondary: Refreshing state... [id=pcx-0226a5b7959290ca6]
+aws_route_table_association.primary_rta: Refreshing state... [id=rtbassoc-00cec207ab63e2cf8]
+aws_route.primary_to_third: Refreshing state... [id=r-rtb-099db33a2413a79e91218385255]
+aws_route_table_association.third_rta: Refreshing state... [id=rtbassoc-0f6edf967c545d2c9]
+aws_route.third_to_primary: Refreshing state... [id=r-rtb-011d7f316f3427232179966490]
+aws_route_table_association.secondary_rta: Refreshing state... [id=rtbassoc-0e3b579c322e1dc4f]
+aws_route.third_to_secondary: Refreshing state... [id=r-rtb-011d7f316f34272323322942084]
+aws_route.secondary_to_third: Refreshing state... [id=r-rtb-092fbd25ea42c325d1218385255]
+aws_route.primary_to_secondary: Refreshing state... [id=r-rtb-099db33a2413a79e93322942084]
+aws_instance.primary_instance: Refreshing state... [id=i-0052e23012407df3a]
+aws_route.secondary_to_primary: Refreshing state... [id=r-rtb-092fbd25ea42c325d179966490]
+aws_instance.secondary_instance: Refreshing state... [id=i-0ae44d283f38ff317]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_instance.primary_instance will be destroyed
+  - resource "aws_instance" "primary_instance" {
+      - ami                                  = "ami-025d99823a4caad37" -> null
+      - arn                                  = "arn:aws:ec2:us-east-1:734754909347:instance/i-0052e23012407df3a" -> null
+      - associate_public_ip_address          = true -> null
+      - availability_zone                    = "us-east-1a" -> null
+      - disable_api_stop                     = false -> null
+      - disable_api_termination              = false -> null
+      - ebs_optimized                        = false -> null
+      - force_destroy                        = false -> null
+      - get_password_data                    = false -> null
+      - hibernation                          = false -> null
+      - id                                   = "i-0052e23012407df3a" -> null
+      - instance_initiated_shutdown_behavior = "stop" -> null
+      - instance_state                       = "running" -> null
+      - instance_type                        = "t3.micro" -> null
+      - ipv6_address_count                   = 0 -> null
+      - ipv6_addresses                       = [] -> null
+      - key_name                             = "vpc-peering-task-region-primary" -> null
+      - monitoring                           = false -> null
+      - placement_partition_number           = 0 -> null
+      - primary_network_interface_id         = "eni-06e0db0fa037e948c" -> null
+      - private_dns                          = "ip-10-0-1-11.ec2.internal" -> null
+      - private_ip                           = "10.0.1.11" -> null
+      - public_dns                           = "ec2-100-52-187-191.compute-1.amazonaws.com" -> null
+      - public_ip                            = "100.52.187.191" -> null
+      - region                               = "us-east-1" -> null
+      - secondary_private_ips                = [] -> null
+      - security_groups                      = [] -> null
+      - source_dest_check                    = true -> null
+      - subnet_id                            = "subnet-001c9b62f978140ae" -> null
+      - tags                                 = {
+          - "Environment" = "Day15-Task"
+          - "Name"        = "Primary-VPC-Instance"
+          - "Region"      = "us-east-1"
+        } -> null
+      - tags_all                             = {
+          - "Environment" = "Day15-Task"
+          - "Name"        = "Primary-VPC-Instance"
+          - "Region"      = "us-east-1"
+        } -> null
+      - tenancy                              = "default" -> null
+      - user_data                            = <<-EOT
+            #!/bin/bash
+            apt-get update -y
+            apt-get install -y apache2
+            systemctl start apache2
+            systemctl enable apache2
+            echo "<h1>Primary VPC Instance - us-east-1</h1>" > /var/www/html/index.html
+            echo "<p>Private IP: $(hostname -I)</p>" /var/www/html/index.html
+        EOT -> null
+      - user_data_replace_on_change          = false -> null
+      - vpc_security_group_ids               = [
+          - "sg-013e54c69dd132fa5",
+        ] -> null
+        # (8 unchanged attributes hidden)
+
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      - cpu_options {
+          - core_count            = 1 -> null
+          - threads_per_core      = 2 -> null
+            # (2 unchanged attributes hidden)
+        }
+
+      - credit_specification {
+          - cpu_credits = "unlimited" -> null
+        }
+
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_protocol_ipv6          = "disabled" -> null
+          - http_put_response_hop_limit = 2 -> null
+          - http_tokens                 = "required" -> null
+          - instance_metadata_tags      = "disabled" -> null
+        }
+
+      - primary_network_interface {
+          - delete_on_termination = true -> null
+          - network_interface_id  = "eni-06e0db0fa037e948c" -> null
+        }
+
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/sda1" -> null
+          - encrypted             = false -> null
+          - iops                  = 3000 -> null
+          - tags                  = {} -> null
+          - tags_all              = {} -> null
+          - throughput            = 125 -> null
+          - volume_id             = "vol-0a35399eeadad3d28" -> null
+          - volume_size           = 8 -> null
+          - volume_type           = "gp3" -> null
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+  # aws_instance.secondary_instance will be destroyed
+  - resource "aws_instance" "secondary_instance" {
+      - ami                                  = "ami-0bc53423cd57b48b7" -> null
+      - arn                                  = "arn:aws:ec2:us-west-1:734754909347:instance/i-0ae44d283f38ff317" -> null
+      - associate_public_ip_address          = true -> null
+      - availability_zone                    = "us-west-1a" -> null
+      - disable_api_stop                     = false -> null
+      - disable_api_termination              = false -> null
+      - ebs_optimized                        = false -> null
+      - force_destroy                        = false -> null
+      - get_password_data                    = false -> null
+      - hibernation                          = false -> null
+      - id                                   = "i-0ae44d283f38ff317" -> null
+      - instance_initiated_shutdown_behavior = "stop" -> null
+      - instance_state                       = "running" -> null
+      - instance_type                        = "t3.micro" -> null
+      - ipv6_address_count                   = 0 -> null
+      - ipv6_addresses                       = [] -> null
+      - key_name                             = "vpc-peering-task-region-secondary" -> null
+      - monitoring                           = false -> null
+      - placement_partition_number           = 0 -> null
+      - primary_network_interface_id         = "eni-0af13a4146fd5392b" -> null
+      - private_dns                          = "ip-10-1-1-7.us-west-1.compute.internal" -> null
+      - private_ip                           = "10.1.1.7" -> null
+      - public_dns                           = "ec2-54-215-247-130.us-west-1.compute.amazonaws.com" -> null
+      - public_ip                            = "54.215.247.130" -> null
+      - region                               = "us-west-1" -> null
+      - secondary_private_ips                = [] -> null
+      - security_groups                      = [] -> null
+      - source_dest_check                    = true -> null
+      - subnet_id                            = "subnet-0bdb281bb4a3d8175" -> null
+      - tags                                 = {
+          - "Environment" = "Day15-Task"
+          - "Name"        = "Secondary-VPC-Instance"
+          - "Region"      = "us-west-1"
+        } -> null
+      - tags_all                             = {
+          - "Environment" = "Day15-Task"
+          - "Name"        = "Secondary-VPC-Instance"
+          - "Region"      = "us-west-1"
+        } -> null
+      - tenancy                              = "default" -> null
+      - user_data                            = <<-EOT
+            #!/bin/bash
+            apt-get update -y
+            apt-get install -y apache2
+            systemctl start apache2
+            systemctl enable apache2
+            echo "<h1>Secondary VPC Instance - us-west-1</h2" > /var/www/html/index.html
+            echo "<p>Private IP: $(hostname -I)</p>" >> /var/www/html/index.html
+        EOT -> null
+      - user_data_replace_on_change          = false -> null
+      - vpc_security_group_ids               = [
+          - "sg-0d544e50491f04cfa",
+        ] -> null
+        # (8 unchanged attributes hidden)
+
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      - cpu_options {
+          - core_count            = 1 -> null
+          - threads_per_core      = 2 -> null
+            # (2 unchanged attributes hidden)
+        }
+
+      - credit_specification {
+          - cpu_credits = "unlimited" -> null
+        }
+
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_protocol_ipv6          = "disabled" -> null
+          - http_put_response_hop_limit = 2 -> null
+          - http_tokens                 = "required" -> null
+          - instance_metadata_tags      = "disabled" -> null
+        }
+
+      - primary_network_interface {
+          - delete_on_termination = true -> null
+          - network_interface_id  = "eni-0af13a4146fd5392b" -> null
+        }
+
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/sda1" -> null
+          - encrypted             = false -> null
+          - iops                  = 3000 -> null
+          - tags                  = {} -> null
+          - tags_all              = {} -> null
+          - throughput            = 125 -> null
+          - volume_id             = "vol-07369fedb8c9215b4" -> null
+          - volume_size           = 8 -> null
+          - volume_type           = "gp3" -> null
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+  # aws_instance.third_instance will be destroyed
+  - resource "aws_instance" "third_instance" {
+      - ami                                  = "ami-00adec9774170bad2" -> null
+      - arn                                  = "arn:aws:ec2:us-east-2:734754909347:instance/i-0fa13ee4b565b6c09" -> null
+      - associate_public_ip_address          = true -> null
+      - availability_zone                    = "us-east-2a" -> null
+      - disable_api_stop                     = false -> null
+      - disable_api_termination              = false -> null
+      - ebs_optimized                        = false -> null
+      - force_destroy                        = false -> null
+      - get_password_data                    = false -> null
+      - hibernation                          = false -> null
+      - id                                   = "i-0fa13ee4b565b6c09" -> null
+      - instance_initiated_shutdown_behavior = "stop" -> null
+      - instance_state                       = "running" -> null
+      - instance_type                        = "t3.micro" -> null
+      - ipv6_address_count                   = 0 -> null
+      - ipv6_addresses                       = [] -> null
+      - key_name                             = "vpc-peering-task-region-third" -> null
+      - monitoring                           = false -> null
+      - placement_partition_number           = 0 -> null
+      - primary_network_interface_id         = "eni-07152f8cb29563f35" -> null
+      - private_dns                          = "ip-10-2-1-4.us-east-2.compute.internal" -> null
+      - private_ip                           = "10.2.1.4" -> null
+      - public_dns                           = "ec2-3-149-29-15.us-east-2.compute.amazonaws.com" -> null
+      - public_ip                            = "3.149.29.15" -> null
+      - region                               = "us-east-2" -> null
+      - secondary_private_ips                = [] -> null
+      - security_groups                      = [] -> null
+      - source_dest_check                    = true -> null
+      - subnet_id                            = "subnet-0b87a78ddfde0f111" -> null
+      - tags                                 = {
+          - "Environment" = "Day15-Task"
+          - "Name"        = "Third-VPC-Instance"
+          - "Region"      = "us-east-2"
+        } -> null
+      - tags_all                             = {
+          - "Environment" = "Day15-Task"
+          - "Name"        = "Third-VPC-Instance"
+          - "Region"      = "us-east-2"
+        } -> null
+      - tenancy                              = "default" -> null
+      - user_data_replace_on_change          = false -> null
+      - vpc_security_group_ids               = [
+          - "sg-0b378d26deb7843a5",
+        ] -> null
+        # (8 unchanged attributes hidden)
+
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      - cpu_options {
+          - core_count            = 1 -> null
+          - threads_per_core      = 2 -> null
+            # (2 unchanged attributes hidden)
+        }
+
+      - credit_specification {
+          - cpu_credits = "unlimited" -> null
+        }
+
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_protocol_ipv6          = "disabled" -> null
+          - http_put_response_hop_limit = 2 -> null
+          - http_tokens                 = "required" -> null
+          - instance_metadata_tags      = "disabled" -> null
+        }
+
+      - primary_network_interface {
+          - delete_on_termination = true -> null
+          - network_interface_id  = "eni-07152f8cb29563f35" -> null
+        }
+
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/sda1" -> null
+          - encrypted             = false -> null
+          - iops                  = 3000 -> null
+          - tags                  = {} -> null
+          - tags_all              = {} -> null
+          - throughput            = 125 -> null
+          - volume_id             = "vol-06f79493cecce4806" -> null
+          - volume_size           = 8 -> null
+          - volume_type           = "gp3" -> null
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+  # aws_internet_gateway.primary_igw will be destroyed
+  - resource "aws_internet_gateway" "primary_igw" {
+      - arn      = "arn:aws:ec2:us-east-1:734754909347:internet-gateway/igw-055fef54561689db1" -> null
+      - id       = "igw-055fef54561689db1" -> null
+      - owner_id = "734754909347" -> null
+      - region   = "us-east-1" -> null
+      - tags     = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Primary-IGW-us-east-1"
+        } -> null
+      - tags_all = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Primary-IGW-us-east-1"
+        } -> null
+      - vpc_id   = "vpc-0c4a0b4417ae49fda" -> null
+    }
+
+  # aws_internet_gateway.secondary_igw will be destroyed
+  - resource "aws_internet_gateway" "secondary_igw" {
+      - arn      = "arn:aws:ec2:us-west-1:734754909347:internet-gateway/igw-0b43996aab6c169b4" -> null
+      - id       = "igw-0b43996aab6c169b4" -> null
+      - owner_id = "734754909347" -> null
+      - region   = "us-west-1" -> null
+      - tags     = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Secondary-IGW-us-west-1"
+        } -> null
+      - tags_all = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Secondary-IGW-us-west-1"
+        } -> null
+      - vpc_id   = "vpc-0b73bb3805e9c88d9" -> null
+    }
+
+  # aws_internet_gateway.third_igw will be destroyed
+  - resource "aws_internet_gateway" "third_igw" {
+      - arn      = "arn:aws:ec2:us-east-2:734754909347:internet-gateway/igw-0a83754a03cd13304" -> null
+      - id       = "igw-0a83754a03cd13304" -> null
+      - owner_id = "734754909347" -> null
+      - region   = "us-east-2" -> null
+      - tags     = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Primary-IGW-us-east-2"
+        } -> null
+      - tags_all = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Primary-IGW-us-east-2"
+        } -> null
+      - vpc_id   = "vpc-092719fb456ebb56c" -> null
+    }
+
+  # aws_route.primary_to_secondary will be destroyed
+  - resource "aws_route" "primary_to_secondary" {
+      - destination_cidr_block      = "10.1.0.0/16" -> null
+      - id                          = "r-rtb-099db33a2413a79e93322942084" -> null
+      - origin                      = "CreateRoute" -> null
+      - region                      = "us-east-1" -> null
+      - route_table_id              = "rtb-099db33a2413a79e9" -> null
+      - state                       = "active" -> null
+      - vpc_peering_connection_id   = "pcx-0273d9c7ad09bc850" -> null
+        # (14 unchanged attributes hidden)
+    }
+
+  # aws_route.primary_to_third will be destroyed
+  - resource "aws_route" "primary_to_third" {
+      - destination_cidr_block      = "10.2.0.0/16" -> null
+      - id                          = "r-rtb-099db33a2413a79e91218385255" -> null
+      - origin                      = "CreateRoute" -> null
+      - region                      = "us-east-1" -> null
+      - route_table_id              = "rtb-099db33a2413a79e9" -> null
+      - state                       = "active" -> null
+      - vpc_peering_connection_id   = "pcx-0ba7c9a61403a4da7" -> null
+        # (14 unchanged attributes hidden)
+    }
+
+  # aws_route.secondary_to_primary will be destroyed
+  - resource "aws_route" "secondary_to_primary" {
+      - destination_cidr_block      = "10.0.0.0/16" -> null
+      - id                          = "r-rtb-092fbd25ea42c325d179966490" -> null
+      - origin                      = "CreateRoute" -> null
+      - region                      = "us-west-1" -> null
+      - route_table_id              = "rtb-092fbd25ea42c325d" -> null
+      - state                       = "active" -> null
+      - vpc_peering_connection_id   = "pcx-0273d9c7ad09bc850" -> null
+        # (14 unchanged attributes hidden)
+    }
+
+  # aws_route.secondary_to_third will be destroyed
+  - resource "aws_route" "secondary_to_third" {
+      - destination_cidr_block      = "10.2.0.0/16" -> null
+      - id                          = "r-rtb-092fbd25ea42c325d1218385255" -> null
+      - origin                      = "CreateRoute" -> null
+      - region                      = "us-west-1" -> null
+      - route_table_id              = "rtb-092fbd25ea42c325d" -> null
+      - state                       = "active" -> null
+      - vpc_peering_connection_id   = "pcx-0226a5b7959290ca6" -> null
+        # (14 unchanged attributes hidden)
+    }
+
+  # aws_route.third_to_primary will be destroyed
+  - resource "aws_route" "third_to_primary" {
+      - destination_cidr_block      = "10.0.0.0/16" -> null
+      - id                          = "r-rtb-011d7f316f3427232179966490" -> null
+      - origin                      = "CreateRoute" -> null
+      - region                      = "us-east-2" -> null
+      - route_table_id              = "rtb-011d7f316f3427232" -> null
+      - state                       = "active" -> null
+      - vpc_peering_connection_id   = "pcx-0ba7c9a61403a4da7" -> null
+        # (14 unchanged attributes hidden)
+    }
+
+  # aws_route.third_to_secondary will be destroyed
+  - resource "aws_route" "third_to_secondary" {
+      - destination_cidr_block      = "10.1.0.0/16" -> null
+      - id                          = "r-rtb-011d7f316f34272323322942084" -> null
+      - origin                      = "CreateRoute" -> null
+      - region                      = "us-east-2" -> null
+      - route_table_id              = "rtb-011d7f316f3427232" -> null
+      - state                       = "active" -> null
+      - vpc_peering_connection_id   = "pcx-0226a5b7959290ca6" -> null
+        # (14 unchanged attributes hidden)
+    }
+
+  # aws_route_table.primary_rt will be destroyed
+  - resource "aws_route_table" "primary_rt" {
+      - arn              = "arn:aws:ec2:us-east-1:734754909347:route-table/rtb-099db33a2413a79e9" -> null
+      - id               = "rtb-099db33a2413a79e9" -> null
+      - owner_id         = "734754909347" -> null
+      - propagating_vgws = [] -> null
+      - region           = "us-east-1" -> null
+      - route            = [
+          - {
+              - cidr_block                 = "0.0.0.0/0"
+              - gateway_id                 = "igw-055fef54561689db1"
+                # (12 unchanged attributes hidden)
+            },
+          - {
+              - cidr_block                 = "10.1.0.0/16"
+              - vpc_peering_connection_id  = "pcx-0273d9c7ad09bc850"
+                # (12 unchanged attributes hidden)
+            },
+          - {
+              - cidr_block                 = "10.2.0.0/16"
+              - vpc_peering_connection_id  = "pcx-0ba7c9a61403a4da7"
+                # (12 unchanged attributes hidden)
+            },
+        ] -> null
+      - tags             = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Primary-Route-Table"
+        } -> null
+      - tags_all         = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Primary-Route-Table"
+        } -> null
+      - vpc_id           = "vpc-0c4a0b4417ae49fda" -> null
+    }
+
+  # aws_route_table.secondary_rt will be destroyed
+  - resource "aws_route_table" "secondary_rt" {
+      - arn              = "arn:aws:ec2:us-west-1:734754909347:route-table/rtb-092fbd25ea42c325d" -> null
+      - id               = "rtb-092fbd25ea42c325d" -> null
+      - owner_id         = "734754909347" -> null
+      - propagating_vgws = [] -> null
+      - region           = "us-west-1" -> null
+      - route            = [
+          - {
+              - cidr_block                 = "0.0.0.0/0"
+              - gateway_id                 = "igw-0b43996aab6c169b4"
+                # (12 unchanged attributes hidden)
+            },
+          - {
+              - cidr_block                 = "10.0.0.0/16"
+              - vpc_peering_connection_id  = "pcx-0273d9c7ad09bc850"
+                # (12 unchanged attributes hidden)
+            },
+          - {
+              - cidr_block                 = "10.2.0.0/16"
+              - vpc_peering_connection_id  = "pcx-0226a5b7959290ca6"
+                # (12 unchanged attributes hidden)
+            },
+        ] -> null
+      - tags             = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Secondary-Route-Table"
+        } -> null
+      - tags_all         = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Secondary-Route-Table"
+        } -> null
+      - vpc_id           = "vpc-0b73bb3805e9c88d9" -> null
+    }
+
+  # aws_route_table.third_rt will be destroyed
+  - resource "aws_route_table" "third_rt" {
+      - arn              = "arn:aws:ec2:us-east-2:734754909347:route-table/rtb-011d7f316f3427232" -> null
+      - id               = "rtb-011d7f316f3427232" -> null
+      - owner_id         = "734754909347" -> null
+      - propagating_vgws = [] -> null
+      - region           = "us-east-2" -> null
+      - route            = [
+          - {
+              - cidr_block                 = "0.0.0.0/0"
+              - gateway_id                 = "igw-0a83754a03cd13304"
+                # (12 unchanged attributes hidden)
+            },
+          - {
+              - cidr_block                 = "10.0.0.0/16"
+              - vpc_peering_connection_id  = "pcx-0ba7c9a61403a4da7"
+                # (12 unchanged attributes hidden)
+            },
+          - {
+              - cidr_block                 = "10.1.0.0/16"
+              - vpc_peering_connection_id  = "pcx-0226a5b7959290ca6"
+                # (12 unchanged attributes hidden)
+            },
+        ] -> null
+      - tags             = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Third-Route-Table"
+        } -> null
+      - tags_all         = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Third-Route-Table"
+        } -> null
+      - vpc_id           = "vpc-092719fb456ebb56c" -> null
+    }
+
+  # aws_route_table_association.primary_rta will be destroyed
+  - resource "aws_route_table_association" "primary_rta" {
+      - id             = "rtbassoc-00cec207ab63e2cf8" -> null
+      - region         = "us-east-1" -> null
+      - route_table_id = "rtb-099db33a2413a79e9" -> null
+      - subnet_id      = "subnet-001c9b62f978140ae" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_route_table_association.secondary_rta will be destroyed
+  - resource "aws_route_table_association" "secondary_rta" {
+      - id             = "rtbassoc-0e3b579c322e1dc4f" -> null
+      - region         = "us-west-1" -> null
+      - route_table_id = "rtb-092fbd25ea42c325d" -> null
+      - subnet_id      = "subnet-0bdb281bb4a3d8175" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_route_table_association.third_rta will be destroyed
+  - resource "aws_route_table_association" "third_rta" {
+      - id             = "rtbassoc-0f6edf967c545d2c9" -> null
+      - region         = "us-east-2" -> null
+      - route_table_id = "rtb-011d7f316f3427232" -> null
+      - subnet_id      = "subnet-0b87a78ddfde0f111" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_security_group.primary_sg will be destroyed
+  - resource "aws_security_group" "primary_sg" {
+      - arn                    = "arn:aws:ec2:us-east-1:734754909347:security-group/sg-013e54c69dd132fa5" -> null
+      - description            = "Security group for Primary VPC instance" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "Allow all outbound traffic"
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-013e54c69dd132fa5" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "SSH from anywhere"
+              - from_port        = 22
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 22
+            },
+          - {
+              - cidr_blocks      = [
+                  - "10.1.0.0/16",
+                ]
+              - description      = "All traffic from Secondary VPC"
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 65535
+            },
+          - {
+              - cidr_blocks      = [
+                  - "10.1.0.0/16",
+                ]
+              - description      = "ICMP from Secondary VPC"
+              - from_port        = -1
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "icmp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = -1
+            },
+          - {
+              - cidr_blocks      = [
+                  - "10.2.0.0/16",
+                ]
+              - description      = "All traffic from Third VPC"
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 65535
+            },
+          - {
+              - cidr_blocks      = [
+                  - "10.2.0.0/16",
+                ]
+              - description      = "ICMP from Third VPC"
+              - from_port        = -1
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "icmp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = -1
+            },
+        ] -> null
+      - name                   = "primary-vpc-sg" -> null
+      - owner_id               = "734754909347" -> null
+      - region                 = "us-east-1" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {
+          - "Environment" = "Day15"
+          - "Name"        = "Primary-VPC-SG"
+        } -> null
+      - tags_all               = {
+          - "Environment" = "Day15"
+          - "Name"        = "Primary-VPC-SG"
+        } -> null
+      - vpc_id                 = "vpc-0c4a0b4417ae49fda" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_security_group.secondary_sg will be destroyed
+  - resource "aws_security_group" "secondary_sg" {
+      - arn                    = "arn:aws:ec2:us-west-1:734754909347:security-group/sg-0d544e50491f04cfa" -> null
+      - description            = "Security group for secondary VPC instance" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "Allow all outbound traffic"
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-0d544e50491f04cfa" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "SSH from anywhere"
+              - from_port        = 22
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 22
+            },
+          - {
+              - cidr_blocks      = [
+                  - "10.0.0.0/16",
+                ]
+              - description      = "All traffic from Primary VPC"
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 65535
+            },
+          - {
+              - cidr_blocks      = [
+                  - "10.0.0.0/16",
+                ]
+              - description      = "ICMP from Primary VPC"
+              - from_port        = -1
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "icmp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = -1
+            },
+          - {
+              - cidr_blocks      = [
+                  - "10.2.0.0/16",
+                ]
+              - description      = "All traffic from the Third VPC"
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 65535
+            },
+          - {
+              - cidr_blocks      = [
+                  - "10.2.0.0/16",
+                ]
+              - description      = "ICMP from Third VPC"
+              - from_port        = -1
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "icmp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = -1
+            },
+        ] -> null
+      - name                   = "secondary-vpc-sg" -> null
+      - owner_id               = "734754909347" -> null
+      - region                 = "us-west-1" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Secondary-VPC-SG"
+        } -> null
+      - tags_all               = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Secondary-VPC-SG"
+        } -> null
+      - vpc_id                 = "vpc-0b73bb3805e9c88d9" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_security_group.third_sg will be destroyed
+  - resource "aws_security_group" "third_sg" {
+      - arn                    = "arn:aws:ec2:us-east-2:734754909347:security-group/sg-0b378d26deb7843a5" -> null
+      - description            = "Security group for third VPC instance" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "Allow all outbound traffic"
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-0b378d26deb7843a5" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "SHH from anywhere"
+              - from_port        = 22
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 22
+            },
+          - {
+              - cidr_blocks      = [
+                  - "10.0.0.0/16",
+                ]
+              - description      = "All traffic from Primary VPC"
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 65535
+            },
+          - {
+              - cidr_blocks      = [
+                  - "10.0.0.0/16",
+                ]
+              - description      = "ICMP from Primary VPC"
+              - from_port        = -1
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "icmp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = -1
+            },
+          - {
+              - cidr_blocks      = [
+                  - "10.1.0.0/16",
+                ]
+              - description      = "All traffic from Secondary VPC"
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 65535
+            },
+          - {
+              - cidr_blocks      = [
+                  - "10.1.0.0/16",
+                ]
+              - description      = "ICMP from Secondary VPC"
+              - from_port        = -1
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "icmp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = -1
+            },
+        ] -> null
+      - name                   = "third-vpc-sg" -> null
+      - owner_id               = "734754909347" -> null
+      - region                 = "us-east-2" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {
+          - "Environment" = "Day15-Challenge"
+          - "Name"        = "Third-VPC-SG"
+        } -> null
+      - tags_all               = {
+          - "Environment" = "Day15-Challenge"
+          - "Name"        = "Third-VPC-SG"
+        } -> null
+      - vpc_id                 = "vpc-092719fb456ebb56c" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_subnet.primary_subnet will be destroyed
+  - resource "aws_subnet" "primary_subnet" {
+      - arn                                            = "arn:aws:ec2:us-east-1:734754909347:subnet/subnet-001c9b62f978140ae" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1a" -> null
+      - availability_zone_id                           = "use1-az1" -> null
+      - cidr_block                                     = "10.0.1.0/28" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-001c9b62f978140ae" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = true -> null
+      - owner_id                                       = "734754909347" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - region                                         = "us-east-1" -> null
+      - tags                                           = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Primary-Subnet-us-east-1"
+        } -> null
+      - tags_all                                       = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Primary-Subnet-us-east-1"
+        } -> null
+      - vpc_id                                         = "vpc-0c4a0b4417ae49fda" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_subnet.secondary_subnet will be destroyed
+  - resource "aws_subnet" "secondary_subnet" {
+      - arn                                            = "arn:aws:ec2:us-west-1:734754909347:subnet/subnet-0bdb281bb4a3d8175" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-west-1a" -> null
+      - availability_zone_id                           = "usw1-az1" -> null
+      - cidr_block                                     = "10.1.1.0/28" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-0bdb281bb4a3d8175" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = true -> null
+      - owner_id                                       = "734754909347" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - region                                         = "us-west-1" -> null
+      - tags                                           = {
+          - "Environment" = "Day15-Task"
+          - "Name"        = "Secondary-Subnet-us-west-1"
+        } -> null
+      - tags_all                                       = {
+          - "Environment" = "Day15-Task"
+          - "Name"        = "Secondary-Subnet-us-west-1"
+        } -> null
+      - vpc_id                                         = "vpc-0b73bb3805e9c88d9" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_subnet.third_subnet will be destroyed
+  - resource "aws_subnet" "third_subnet" {
+      - arn                                            = "arn:aws:ec2:us-east-2:734754909347:subnet/subnet-0b87a78ddfde0f111" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-2a" -> null
+      - availability_zone_id                           = "use2-az1" -> null
+      - cidr_block                                     = "10.2.1.0/28" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-0b87a78ddfde0f111" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = true -> null
+      - owner_id                                       = "734754909347" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - region                                         = "us-east-2" -> null
+      - tags                                           = {
+          - "Environment" = "Day15-Task"
+          - "Name"        = "Third-subnet-us-east-2"
+        } -> null
+      - tags_all                                       = {
+          - "Environment" = "Day15-Task"
+          - "Name"        = "Third-subnet-us-east-2"
+        } -> null
+      - vpc_id                                         = "vpc-092719fb456ebb56c" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_vpc.primary_vpc will be destroyed
+  - resource "aws_vpc" "primary_vpc" {
+      - arn                                  = "arn:aws:ec2:us-east-1:734754909347:vpc/vpc-0c4a0b4417ae49fda" -> null
+      - assign_generated_ipv6_cidr_block     = false -> null
+      - cidr_block                           = "10.0.0.0/16" -> null
+      - default_network_acl_id               = "acl-0276425492f91bc2a" -> null
+      - default_route_table_id               = "rtb-0978fe4d36887ecc8" -> null
+      - default_security_group_id            = "sg-0eecd3fc8d0d668d3" -> null
+      - dhcp_options_id                      = "dopt-04aae537e3c9b3104" -> null
+      - enable_dns_hostnames                 = true -> null
+      - enable_dns_support                   = true -> null
+      - enable_network_address_usage_metrics = false -> null
+      - id                                   = "vpc-0c4a0b4417ae49fda" -> null
+      - instance_tenancy                     = "default" -> null
+      - ipv6_netmask_length                  = 0 -> null
+      - main_route_table_id                  = "rtb-0978fe4d36887ecc8" -> null
+      - owner_id                             = "734754909347" -> null
+      - region                               = "us-east-1" -> null
+      - tags                                 = {
+          - "Name" = "Primary-VPC-us-east-1"
+        } -> null
+      - tags_all                             = {
+          - "Name" = "Primary-VPC-us-east-1"
+        } -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_vpc.secondary_vpc will be destroyed
+  - resource "aws_vpc" "secondary_vpc" {
+      - arn                                  = "arn:aws:ec2:us-west-1:734754909347:vpc/vpc-0b73bb3805e9c88d9" -> null
+      - assign_generated_ipv6_cidr_block     = false -> null
+      - cidr_block                           = "10.1.0.0/16" -> null
+      - default_network_acl_id               = "acl-0a49a1f919e184c78" -> null
+      - default_route_table_id               = "rtb-0dcc0b7437e13a69d" -> null
+      - default_security_group_id            = "sg-0a105e72d02decd84" -> null
+      - dhcp_options_id                      = "dopt-0e71ae7e78b2034c8" -> null
+      - enable_dns_hostnames                 = true -> null
+      - enable_dns_support                   = true -> null
+      - enable_network_address_usage_metrics = false -> null
+      - id                                   = "vpc-0b73bb3805e9c88d9" -> null
+      - instance_tenancy                     = "default" -> null
+      - ipv6_netmask_length                  = 0 -> null
+      - main_route_table_id                  = "rtb-0dcc0b7437e13a69d" -> null
+      - owner_id                             = "734754909347" -> null
+      - region                               = "us-west-1" -> null
+      - tags                                 = {
+          - "Name" = "Secondary-VPC-us-east-1"
+        } -> null
+      - tags_all                             = {
+          - "Name" = "Secondary-VPC-us-east-1"
+        } -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_vpc.third_vpc will be destroyed
+  - resource "aws_vpc" "third_vpc" {
+      - arn                                  = "arn:aws:ec2:us-east-2:734754909347:vpc/vpc-092719fb456ebb56c" -> null
+      - assign_generated_ipv6_cidr_block     = false -> null
+      - cidr_block                           = "10.2.0.0/16" -> null
+      - default_network_acl_id               = "acl-0f7a2e61cf0324507" -> null
+      - default_route_table_id               = "rtb-0b773ae1196184813" -> null
+      - default_security_group_id            = "sg-011e1fc70758a9966" -> null
+      - dhcp_options_id                      = "dopt-00367352b518b392e" -> null
+      - enable_dns_hostnames                 = true -> null
+      - enable_dns_support                   = true -> null
+      - enable_network_address_usage_metrics = false -> null
+      - id                                   = "vpc-092719fb456ebb56c" -> null
+      - instance_tenancy                     = "default" -> null
+      - ipv6_netmask_length                  = 0 -> null
+      - main_route_table_id                  = "rtb-0b773ae1196184813" -> null
+      - owner_id                             = "734754909347" -> null
+      - region                               = "us-east-2" -> null
+      - tags                                 = {
+          - "Name" = "Third-VPC-us-east-2"
+        } -> null
+      - tags_all                             = {
+          - "Name" = "Third-VPC-us-east-2"
+        } -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_vpc_peering_connection.primary_to_secondary will be destroyed
+  - resource "aws_vpc_peering_connection" "primary_to_secondary" {
+      - accept_status = "active" -> null
+      - id            = "pcx-0273d9c7ad09bc850" -> null
+      - peer_owner_id = "734754909347" -> null
+      - peer_region   = "us-west-1" -> null
+      - peer_vpc_id   = "vpc-0b73bb3805e9c88d9" -> null
+      - region        = "us-east-1" -> null
+      - tags          = {
+          - "Environment" = "Day15-Task"
+          - "Name"        = "Primary-to-Secondary-Peering"
+          - "Purpose"     = "VPC-Peering-Task"
+          - "Side"        = "Requester"
+        } -> null
+      - tags_all      = {
+          - "Environment" = "Day15-Task"
+          - "Name"        = "Primary-to-Secondary-Peering"
+          - "Purpose"     = "VPC-Peering-Task"
+          - "Side"        = "Requester"
+        } -> null
+      - vpc_id        = "vpc-0c4a0b4417ae49fda" -> null
+
+      - accepter {
+          - allow_remote_vpc_dns_resolution = false -> null
+        }
+
+      - requester {
+          - allow_remote_vpc_dns_resolution = false -> null
+        }
+    }
+
+  # aws_vpc_peering_connection.secondary_to_third will be destroyed
+  - resource "aws_vpc_peering_connection" "secondary_to_third" {
+      - accept_status = "active" -> null
+      - auto_accept   = false -> null
+      - id            = "pcx-0226a5b7959290ca6" -> null
+      - peer_owner_id = "734754909347" -> null
+      - peer_region   = "us-east-2" -> null
+      - peer_vpc_id   = "vpc-092719fb456ebb56c" -> null
+      - region        = "us-west-1" -> null
+      - tags          = {
+          - "Environment" = "Day15-Task"
+          - "Name"        = "Secondary-to-Third-Peering"
+          - "Purpose"     = "VPC-Peering-Task"
+          - "Side"        = "Requester"
+        } -> null
+      - tags_all      = {
+          - "Environment" = "Day15-Task"
+          - "Name"        = "Secondary-to-Third-Peering"
+          - "Purpose"     = "VPC-Peering-Task"
+          - "Side"        = "Requester"
+        } -> null
+      - vpc_id        = "vpc-0b73bb3805e9c88d9" -> null
+
+      - accepter {
+          - allow_remote_vpc_dns_resolution = false -> null
+        }
+
+      - requester {
+          - allow_remote_vpc_dns_resolution = false -> null
+        }
+    }
+
+  # aws_vpc_peering_connection.third_to_primary will be destroyed
+  - resource "aws_vpc_peering_connection" "third_to_primary" {
+      - accept_status = "active" -> null
+      - auto_accept   = false -> null
+      - id            = "pcx-0ba7c9a61403a4da7" -> null
+      - peer_owner_id = "734754909347" -> null
+      - peer_region   = "us-east-1" -> null
+      - peer_vpc_id   = "vpc-0c4a0b4417ae49fda" -> null
+      - region        = "us-east-2" -> null
+      - tags          = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Third-to-Primary-Peering"
+          - "Purpose"     = "VPC-Peering-Task"
+          - "Side"        = "Requester"
+        } -> null
+      - tags_all      = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Third-to-Primary-Peering"
+          - "Purpose"     = "VPC-Peering-Task"
+          - "Side"        = "Requester"
+        } -> null
+      - vpc_id        = "vpc-092719fb456ebb56c" -> null
+
+      - accepter {
+          - allow_remote_vpc_dns_resolution = false -> null
+        }
+
+      - requester {
+          - allow_remote_vpc_dns_resolution = false -> null
+        }
+    }
+
+  # aws_vpc_peering_connection_accepter.primary_accept_third will be destroyed
+  - resource "aws_vpc_peering_connection_accepter" "primary_accept_third" {
+      - accept_status             = "active" -> null
+      - auto_accept               = true -> null
+      - id                        = "pcx-0ba7c9a61403a4da7" -> null
+      - peer_owner_id             = "734754909347" -> null
+      - peer_region               = "us-east-1" -> null
+      - peer_vpc_id               = "vpc-0c4a0b4417ae49fda" -> null
+      - region                    = "us-east-1" -> null
+      - tags                      = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Primary-Accepter"
+          - "Purpose"     = "VPC-Peering-Task"
+          - "Side"        = "Accepter"
+        } -> null
+      - tags_all                  = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Primary-Accepter"
+          - "Purpose"     = "VPC-Peering-Task"
+          - "Side"        = "Accepter"
+        } -> null
+      - vpc_id                    = "vpc-092719fb456ebb56c" -> null
+      - vpc_peering_connection_id = "pcx-0ba7c9a61403a4da7" -> null
+
+      - accepter {
+          - allow_remote_vpc_dns_resolution = false -> null
+        }
+
+      - requester {
+          - allow_remote_vpc_dns_resolution = false -> null
+        }
+    }
+
+  # aws_vpc_peering_connection_accepter.secondary_region_accepter will be destroyed
+  - resource "aws_vpc_peering_connection_accepter" "secondary_region_accepter" {
+      - accept_status             = "active" -> null
+      - auto_accept               = true -> null
+      - id                        = "pcx-0273d9c7ad09bc850" -> null
+      - peer_owner_id             = "734754909347" -> null
+      - peer_region               = "us-west-1" -> null
+      - peer_vpc_id               = "vpc-0b73bb3805e9c88d9" -> null
+      - region                    = "us-west-1" -> null
+      - tags                      = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Secondary_Peering-Accepter"
+          - "Purpose"     = "VPC-Peering-Task"
+          - "Side"        = "Accepter"
+        } -> null
+      - tags_all                  = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Secondary_Peering-Accepter"
+          - "Purpose"     = "VPC-Peering-Task"
+          - "Side"        = "Accepter"
+        } -> null
+      - vpc_id                    = "vpc-0c4a0b4417ae49fda" -> null
+      - vpc_peering_connection_id = "pcx-0273d9c7ad09bc850" -> null
+
+      - accepter {
+          - allow_remote_vpc_dns_resolution = false -> null
+        }
+
+      - requester {
+          - allow_remote_vpc_dns_resolution = false -> null
+        }
+    }
+
+  # aws_vpc_peering_connection_accepter.third_accept_secondary will be destroyed
+  - resource "aws_vpc_peering_connection_accepter" "third_accept_secondary" {
+      - accept_status             = "active" -> null
+      - auto_accept               = true -> null
+      - id                        = "pcx-0226a5b7959290ca6" -> null
+      - peer_owner_id             = "734754909347" -> null
+      - peer_region               = "us-east-2" -> null
+      - peer_vpc_id               = "vpc-092719fb456ebb56c" -> null
+      - region                    = "us-east-2" -> null
+      - tags                      = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Third_Peering-Accepter"
+          - "Purpose"     = "VPC-Peering-Task"
+          - "Side"        = "Accepter"
+        } -> null
+      - tags_all                  = {
+          - "Environment" = "Day15-task"
+          - "Name"        = "Third_Peering-Accepter"
+          - "Purpose"     = "VPC-Peering-Task"
+          - "Side"        = "Accepter"
+        } -> null
+      - vpc_id                    = "vpc-0b73bb3805e9c88d9" -> null
+      - vpc_peering_connection_id = "pcx-0226a5b7959290ca6" -> null
+
+      - accepter {
+          - allow_remote_vpc_dns_resolution = false -> null
+        }
+
+      - requester {
+          - allow_remote_vpc_dns_resolution = false -> null
+        }
+    }
+
+Plan: 0 to add, 0 to change, 33 to destroy.
+aws_route_table_association.primary_rta: Destroying... [id=rtbassoc-00cec207ab63e2cf8]
+aws_route.primary_to_secondary: Destroying... [id=r-rtb-099db33a2413a79e93322942084]
+aws_route.primary_to_third: Destroying... [id=r-rtb-099db33a2413a79e91218385255]
+aws_instance.primary_instance: Destroying... [id=i-0052e23012407df3a]
+aws_route_table_association.third_rta: Destroying... [id=rtbassoc-0f6edf967c545d2c9]
+aws_route.third_to_secondary: Destroying... [id=r-rtb-011d7f316f34272323322942084]
+aws_route.third_to_primary: Destroying... [id=r-rtb-011d7f316f3427232179966490]
+aws_instance.third_instance: Destroying... [id=i-0fa13ee4b565b6c09]
+aws_route_table_association.secondary_rta: Destroying... [id=rtbassoc-0e3b579c322e1dc4f]
+aws_route.secondary_to_primary: Destroying... [id=r-rtb-092fbd25ea42c325d179966490]
+aws_route_table_association.primary_rta: Destruction complete after 1s
+aws_instance.secondary_instance: Destroying... [id=i-0ae44d283f38ff317]
+aws_route_table_association.third_rta: Destruction complete after 2s
+aws_route.primary_to_secondary: Destruction complete after 2s
+aws_route.secondary_to_third: Destroying... [id=r-rtb-092fbd25ea42c325d1218385255]
+aws_route.primary_to_third: Destruction complete after 2s
+aws_route_table.primary_rt: Destroying... [id=rtb-099db33a2413a79e9]
+aws_route_table_association.secondary_rta: Destruction complete after 2s
+aws_route.third_to_secondary: Destruction complete after 2s
+aws_vpc_peering_connection_accepter.third_accept_secondary: Destroying... [id=pcx-0226a5b7959290ca6]
+aws_vpc_peering_connection_accepter.third_accept_secondary: Destruction complete after 0s
+aws_route.third_to_primary: Destruction complete after 2s
+aws_vpc_peering_connection_accepter.primary_accept_third: Destroying... [id=pcx-0ba7c9a61403a4da7]
+aws_route_table.third_rt: Destroying... [id=rtb-011d7f316f3427232]
+aws_vpc_peering_connection_accepter.primary_accept_third: Destruction complete after 0s
+aws_vpc_peering_connection.third_to_primary: Destroying... [id=pcx-0ba7c9a61403a4da7]
+aws_route.secondary_to_primary: Destruction complete after 3s
+aws_route.secondary_to_third: Destruction complete after 1s
+aws_vpc_peering_connection.secondary_to_third: Destroying... [id=pcx-0226a5b7959290ca6]
+aws_route_table.secondary_rt: Destroying... [id=rtb-092fbd25ea42c325d]
+aws_route_table.primary_rt: Destruction complete after 1s
+aws_internet_gateway.primary_igw: Destroying... [id=igw-055fef54561689db1]
+aws_vpc_peering_connection.third_to_primary: Destruction complete after 1s
+aws_route_table.third_rt: Destruction complete after 2s
+aws_internet_gateway.third_igw: Destroying... [id=igw-0a83754a03cd13304]
+aws_route_table.secondary_rt: Destruction complete after 2s
+aws_internet_gateway.secondary_igw: Destroying... [id=igw-0b43996aab6c169b4]
+aws_instance.primary_instance: Still destroying... [id=i-0052e23012407df3a, 00m10s elapsed]
+aws_instance.third_instance: Still destroying... [id=i-0fa13ee4b565b6c09, 00m10s elapsed]
+aws_instance.secondary_instance: Still destroying... [id=i-0ae44d283f38ff317, 00m10s elapsed]
+aws_vpc_peering_connection.secondary_to_third: Destruction complete after 9s
+aws_internet_gateway.primary_igw: Still destroying... [id=igw-055fef54561689db1, 00m10s elapsed]
+aws_internet_gateway.third_igw: Still destroying... [id=igw-0a83754a03cd13304, 00m10s elapsed]
+aws_internet_gateway.secondary_igw: Still destroying... [id=igw-0b43996aab6c169b4, 00m10s elapsed]
+aws_instance.primary_instance: Still destroying... [id=i-0052e23012407df3a, 00m20s elapsed]
+aws_instance.third_instance: Still destroying... [id=i-0fa13ee4b565b6c09, 00m20s elapsed]
+aws_instance.secondary_instance: Still destroying... [id=i-0ae44d283f38ff317, 00m20s elapsed]
+aws_internet_gateway.primary_igw: Still destroying... [id=igw-055fef54561689db1, 00m20s elapsed]
+aws_internet_gateway.third_igw: Still destroying... [id=igw-0a83754a03cd13304, 00m20s elapsed]
+aws_instance.third_instance: Destruction complete after 24s
+aws_subnet.third_subnet: Destroying... [id=subnet-0b87a78ddfde0f111]
+aws_security_group.third_sg: Destroying... [id=sg-0b378d26deb7843a5]
+aws_internet_gateway.secondary_igw: Destruction complete after 20s
+aws_internet_gateway.primary_igw: Destruction complete after 22s
+aws_internet_gateway.third_igw: Destruction complete after 21s
+aws_subnet.third_subnet: Destruction complete after 2s
+aws_security_group.third_sg: Destruction complete after 2s
+aws_vpc.third_vpc: Destroying... [id=vpc-092719fb456ebb56c]
+aws_vpc.third_vpc: Destruction complete after 1s
+aws_instance.primary_instance: Still destroying... [id=i-0052e23012407df3a, 00m30s elapsed]
+aws_instance.secondary_instance: Still destroying... [id=i-0ae44d283f38ff317, 00m30s elapsed]
+aws_instance.secondary_instance: Destruction complete after 34s
+aws_instance.primary_instance: Destruction complete after 35s
+aws_vpc_peering_connection_accepter.secondary_region_accepter: Destroying... [id=pcx-0273d9c7ad09bc850]
+aws_subnet.secondary_subnet: Destroying... [id=subnet-0bdb281bb4a3d8175]
+aws_subnet.primary_subnet: Destroying... [id=subnet-001c9b62f978140ae]
+aws_security_group.secondary_sg: Destroying... [id=sg-0d544e50491f04cfa]
+aws_vpc_peering_connection_accepter.secondary_region_accepter: Destruction complete after 0s
+aws_security_group.primary_sg: Destroying... [id=sg-013e54c69dd132fa5]
+aws_vpc_peering_connection.primary_to_secondary: Destroying... [id=pcx-0273d9c7ad09bc850]
+aws_subnet.primary_subnet: Destruction complete after 1s
+aws_security_group.secondary_sg: Destruction complete after 1s
+aws_security_group.primary_sg: Destruction complete after 1s
+aws_subnet.secondary_subnet: Destruction complete after 1s
+aws_vpc_peering_connection.primary_to_secondary: Still destroying... [id=pcx-0273d9c7ad09bc850, 00m10s elapsed]
+aws_vpc_peering_connection.primary_to_secondary: Destruction complete after 15s
+aws_vpc.primary_vpc: Destroying... [id=vpc-0c4a0b4417ae49fda]
+aws_vpc.secondary_vpc: Destroying... [id=vpc-0b73bb3805e9c88d9]
+aws_vpc.primary_vpc: Destruction complete after 1s
+aws_vpc.secondary_vpc: Destruction complete after 1s
+
+Destroy complete! Resources: 33 destroyed.
+
+   pwsh MEM: 78% | 10/13GB   1m 11s 347ms  (base) 
+╭─ ♥ 01:41 |                TaskCode 
+╰─ 

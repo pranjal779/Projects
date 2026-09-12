@@ -1,0 +1,227 @@
+# For us-east-1
+aws ec2 create-key-pair --key-name vpc-peering-demo --region us-east-1 --query 'KeyMaterial' --output text > vpc-peering-demo.pem
+
+# For us-west-2
+aws ec2 create-key-pair --key-name vpc-peering-demo --region us-west-2 --query 'KeyMaterial' --output text > vpc-peering-demo-west.pem
+
+# Set permissions (on Linux/Mac)
+chmod 400 vpc-peering-demo.pem
+
+
+----------
+
+
+   pwsh MEM: 76% | 10/13GB   27s 660ms  (base) 
+╭─ ♥ 20:52 |                TaskCode 
+╰─ 
+ *  History restored 
+
+ # For us-east-1
+ aws ec2 create-key-pair --key-name vpc-peering-demo --region us-east-1 --query 'KeyMaterial' --output text > vpc-peering-demo.pem
+ 
+ # For us-west-2
+ aws ec2 create-key-pair --key-name vpc-peering-demo --region us-west-2 --query 'KeyMaterial' --output text > vpc-peering-demo-west.pem
+ 
+ # Set permissions (on Linux/Mac)
+ aws ec2 create-key-pair --key-name vpc-peering-demo --region us-east-1 --query 'KeyMaterial' --output text > vpc-peering-demo.pem
+
+An error occurred (InvalidKeyPair.Duplicate) when calling the CreateKeyPair operation: The keypair already exists
+ aws ec2 create-key-pair --key-name vpc-peering-demo --region us-east-1 --query 'KeyMaterial' --output text > vpc-peering-demo-us-east-1.pem
+
+An error occurred (InvalidKeyPair.Duplicate) when calling the CreateKeyPair operation: The keypair already exists
+ aws ec2 create-key-pair --key-name vpc-peering-demo --region us-east-1 --query 'KeyMaterial' --output text > vpc-peering-demo-us-east-1.pem
+
+An error occurred (InvalidKeyPair.Duplicate) when calling the CreateKeyPair operation: The keypair already exists
+ aws ec2 delete-key-pair --key-name vpc-peering-demo --region us-east-1
+{                                                                                                                                                                                                                   
+    "Return": true,
+    "KeyPairId": "key-05a89d1f9365840c4"
+}
+
+
+   pwsh MEM: 75% | 10/13GB   3s 347ms  (base) 
+╭─ ♥ 21:52 |                TaskCode 
+╰─ 
+
+
+ aws ec2 create-key-pair --key-name vpc-peering-demo --region us-east-1 --query 'KeyMaterial' --output text > vpc-peering-demo-us-east-1.pem
+ aws ec2 create-key-pair --key-name vpc-peering-demo --region us-west-1 --query 'KeyMaterial' --output text > vpc-peering-demo-us-west-1.pem
+ aws ec2 create-key-pair --key-name vpc-peering-demo --region us-east-2 --query 'KeyMaterial' --output text > vpc-peering-demo-us-east-2.pem
+
+   pwsh MEM: 74% | 10/13GB   2s 904ms  (base) 
+╭─ ♥ 21:54 |                TaskCode 
+╰─ 
+
+
+{                                                                                                                                                                                                                   
+    "Return": true,
+    "KeyPairId": "key-0ec4b3c4583ebde91"
+}
+
+ aws ec2 delete-key-pair --key-name vpc-peering-demo --region us-east-2
+{                                                                                                                                                                                                                   
+    "Return": true,
+    "KeyPairId": "key-01ce0554decc98250"
+}
+
+ aws ec2 delete-key-pair --key-name vpc-peering-demo --region us-west-1
+{                                                                                                                                                                                                                   
+    "Return": true,
+    "KeyPairId": "key-0fd9015f95e6f4a34"
+}
+
+
+   pwsh MEM: 73% | 10/13GB   3s 105ms  (base) 
+╭─ ♥ 21:58 |                TaskCode 
+╰─ 
+
+ aws ec2 create-key-pair --key-name vpc-peering-demo --region us-east-1 --query 'KeyMaterial' --output text > vpc-peering-task-region-primary.pem
+ aws ec2 create-key-pair --key-name vpc-peering-demo --region us-west-1 --query 'KeyMaterial' --output text > vpc-peering-task-region-secondary.pem
+ aws ec2 create-key-pair --key-name vpc-peering-demo --region us-east-2 --query 'KeyMaterial' --output text > vpc-peering-task-region-third.pem
+
+
+ aws ec2 describe-key-pairs --region us-east-1 --query "KeyPairs[*].KeyName" --output table
+----------------------                                                                                                                                                                                              
+|  DescribeKeyPairs  |
++--------------------+
+|  vpc-peering-demo  |
++--------------------+
+
+ aws ec2 describe-key-pairs --region us-west-1 --query "KeyPairs[*].KeyName" --output table
+----------------------                                                                                                                                                                                              
+|  DescribeKeyPairs  |
++--------------------+
+|  vpc-peering-demo  |
++--------------------+
+
+ aws ec2 describe-key-pairs --region us-east-2 --query "KeyPairs[*].KeyName" --output table
+----------------------                                                                                                                                                                                              
+|  DescribeKeyPairs  |
++--------------------+
+|  vpc-peering-demo  |
++--------------------+
+
+   pwsh MEM: 74% | 10/13GB   2s 817ms  (base) 
+╭─ ♥ 22:00 |                TaskCode 
+╰─ 
+
+ aws ec2 delete-key-pair --key-name vpc-peering-demo --region us-east-1
+{                                                                                                                                                                                                                   
+    "Return": true,
+    "KeyPairId": "key-088ad3fb317d3a449"
+}
+
+ aws ec2 delete-key-pair --key-name vpc-peering-demo --region us-east-1
+{                                                                                                                                                                                                                   
+    "Return": true
+}
+
+ aws ec2 delete-key-pair --key-name vpc-peering-demo --region us-west-1
+{                                                                                                                                                                                                                   
+    "Return": true,
+    "KeyPairId": "key-02cdd524aeb6960d3"
+}
+
+ aws ec2 delete-key-pair --key-name vpc-peering-demo --region us-east-2
+{                                                                                                                                                                                                                   
+    "Return": true,
+    "KeyPairId": "key-0566486f6ba38a3bf"
+}
+
+
+   pwsh MEM: 84% | 11/13GB   3s 500ms  (base) 
+╭─ ♥ 22:21 |                TaskCode 
+╰─ 
+
+
+ aws ec2 describe-key-pairs --region us-east-1 --query "KeyPairs[*].KeyName" --output table
+ aws ec2 describe-key-pairs --region us-east-2 --query "KeyPairs[*].KeyName" --output table
+ aws ec2 describe-key-pairs --region us-west-1 --query "KeyPairs[*].KeyName" --output table
+
+   pwsh MEM: 81% | 11/13GB   3s 96ms  (base) 
+╭─ ♥ 22:23 |                TaskCode 
+
+
+ aws ec2 describe-key-pairs --region us-east-1 --query "KeyPairs[*].KeyName" --output table
+----------------------                                                                                                                                                                                              
+|  DescribeKeyPairs  |
++--------------------+
+|  vpc-peering-demo  |
++--------------------+
+
+ aws ec2 delete-key-pair --key-name vpc-peering-demo --region us-east-1
+{                                                                                                                                                                                                                   
+    "Return": true,
+    "KeyPairId": "key-0098b5f3f81b916aa"
+}
+
+ aws ec2 create-key-pair --key-name vpc-peering-task-region-primary --region us-east-1 --query 'KeyMaterial' --output text > vpc-peering-task-region-primary.pem
+ aws ec2 describe-key-pairs --region us-east-1 --query "KeyPairs[*].KeyName" --output table
+-------------------------------------                                                                                                                                                                               
+|         DescribeKeyPairs          |
++-----------------------------------+
+|  vpc-peering-task-region-primary  |
++-----------------------------------+
+
+ aws ec2 create-key-pair --key-name vpc-peering-task-region-secondary --region us-west-1 --query 'KeyMaterial' --output text > vpc-peering-task-region-secondary.pem
+ aws ec2 describe-key-pairs --region us-west-1 --query "KeyPairs[*].KeyName" --output table
+---------------------------------------                                                                                                                                                                             
+|          DescribeKeyPairs           |
++-------------------------------------+
+|  vpc-peering-demo                   |
+|  vpc-peering-task-region-secondary  |
++-------------------------------------+
+
+ aws ec2 delete-key-pair --key-name vpc-peering-demo --region us-west-1
+{                                                                                                                                                                                                                   
+    "Return": true,
+    "KeyPairId": "key-064e27e1c882e95aa"
+}
+
+ aws ec2 describe-key-pairs --region us-west-1 --query "KeyPairs[*].KeyName" --output table
+---------------------------------------                                                                                                                                                                             
+|          DescribeKeyPairs           |
++-------------------------------------+
+|  vpc-peering-task-region-secondary  |
++-------------------------------------+
+
+ aws ec2 describe-key-pairs --region us-east-2 --query "KeyPairs[*].KeyName" --output table
+----------------------                                                                                                                                                                                              
+|  DescribeKeyPairs  |
++--------------------+
+|  vpc-peering-demo  |
++--------------------+
+
+ aws ec2 delete-key-pair --key-name vpc-peering-demo --region us-east-2
+{                                                                                                                                                                                                                   
+    "Return": true,
+    "KeyPairId": "key-02f1ce3b524a9c657"
+}
+
+ aws ec2 describe-key-pairs --region us-east-2 --query "KeyPairs[*].KeyName" --output table
+ aws ec2 create-key-pair --key-name vpc-peering-task-region-third --region us-east-2 --query 'KeyMaterial' --output text > vpc-peering-task-region-third.pem
+ aws ec2 describe-key-pairs --region us-east-2 --query "KeyPairs[*].KeyName" --output table
+-----------------------------------                                                                                                                                                                                 
+|        DescribeKeyPairs         |
++---------------------------------+
+|  vpc-peering-task-region-third  |
++---------------------------------+
+
+ aws ec2 describe-key-pairs --region us-west-2 --query "KeyPairs[*].KeyName" --output table
+----------------------                                                                                                                                                                                              
+|  DescribeKeyPairs  |
++--------------------+
+|  vpc-peering-demo  |
++--------------------+
+
+ aws ec2 delete-key-pair --key-name vpc-peering-demo --region us-west-2
+{                                                                                                                                                                                                                   
+    "Return": true,
+    "KeyPairId": "key-0226c022a9bec93b9"
+}
+
+ aws ec2 describe-key-pairs --region us-west-2 --query "KeyPairs[*].KeyName" --output table
+
+   pwsh MEM: 78% | 10/13GB   2s 851ms  (base) 
+╭─ ♥ 22:31 |                TaskCode 
+╰─ 

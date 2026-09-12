@@ -1,0 +1,1053 @@
+ terraform apply --auto-approve
+data.aws_availability_zones.third: Reading...
+data.aws_ami.third_ami: Reading...
+data.aws_ami.primary_ami: Reading...
+data.aws_availability_zones.primary: Reading...
+data.aws_availability_zones.secondary: Reading...
+data.aws_ami.secondary_ami: Reading...
+data.aws_availability_zones.primary: Read complete after 1s []
+data.aws_availability_zones.third: Read complete after 1s []
+data.aws_availability_zones.secondary: Read complete after 1s []
+data.aws_ami.primary_ami: Read complete after 1s []
+data.aws_ami.third_ami: Read complete after 1s []
+data.aws_ami.secondary_ami: Read complete after 1s []
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_instance.primary_instance will be created
+  + resource "aws_instance" "primary_instance" {
+      + ami                                  = "ami-025d99823a4caad37"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + force_destroy                        = false
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = (known after apply)
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "t3.micro"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = "vpc-peering-task-region-primary"
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_group_id                   = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + region                               = "us-east-1"
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = (known after apply)
+      + tags                                 = {
+          + "Environment" = "Day15-Task"
+          + "Name"        = "Primary-VPC-Instance"
+          + "Region"      = "us-east-1"
+        }
+      + tags_all                             = {
+          + "Environment" = "Day15-Task"
+          + "Name"        = "Primary-VPC-Instance"
+          + "Region"      = "us-east-1"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = <<-EOT
+            #!/bin/bash
+            apt-get update -y
+            apt-get install -y apache2
+            systemctl start apache2
+            systemctl enable apache2
+            echo "<h1>Primary VPC Instance - us-east-1</h1>" > /var/www/html/index.html
+            echo "<p>Private IP: $(hostname -I)</p>" /var/www/html/index.html
+        EOT
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = false
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options (known after apply)
+
+      + network_interface (known after apply)
+
+      + primary_network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device (known after apply)
+
+      + secondary_network_interface (known after apply)
+    }
+
+  # aws_instance.secondary_instance will be created
+  + resource "aws_instance" "secondary_instance" {
+      + ami                                  = "ami-0bc53423cd57b48b7"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + force_destroy                        = false
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = (known after apply)
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "t3.micro"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = "vpc-peering-task-region-secondary"
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_group_id                   = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + region                               = "us-west-1"
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = (known after apply)
+      + tags                                 = {
+          + "Environment" = "Day15-Task"
+          + "Name"        = "Secondary-VPC-Instance"
+          + "Region"      = "us-west-1"
+        }
+      + tags_all                             = {
+          + "Environment" = "Day15-Task"
+          + "Name"        = "Secondary-VPC-Instance"
+          + "Region"      = "us-west-1"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = <<-EOT
+            #!/bin/bash
+            apt-get update -y
+            apt-get install -y apache2
+            systemctl start apache2
+            systemctl enable apache2
+            echo "<h1>Secondary VPC Instance - us-west-1</h2" > /var/www/html/index.html
+            echo "<p>Private IP: $(hostname -I)</p>" >> /var/www/html/index.html
+        EOT
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = false
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options (known after apply)
+
+      + network_interface (known after apply)
+
+      + primary_network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device (known after apply)
+
+      + secondary_network_interface (known after apply)
+    }
+
+  # aws_instance.third_instance will be created
+  + resource "aws_instance" "third_instance" {
+      + ami                                  = "ami-00adec9774170bad2"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + force_destroy                        = false
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = (known after apply)
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "t3.micro"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = "vpc-peering-task-region-third"
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_group_id                   = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + region                               = "us-east-2"
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = (known after apply)
+      + tags                                 = {
+          + "Environment" = "Day15-Task"
+          + "Name"        = "Third-VPC-Instance"
+          + "Region"      = "us-east-2"
+        }
+      + tags_all                             = {
+          + "Environment" = "Day15-Task"
+          + "Name"        = "Third-VPC-Instance"
+          + "Region"      = "us-east-2"
+        }
+      + tenancy                              = (known after apply)
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = false
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options (known after apply)
+
+      + network_interface (known after apply)
+
+      + primary_network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device (known after apply)
+
+      + secondary_network_interface (known after apply)
+    }
+
+  # aws_internet_gateway.primary_igw will be created
+  + resource "aws_internet_gateway" "primary_igw" {
+      + arn      = (known after apply)
+      + id       = (known after apply)
+      + owner_id = (known after apply)
+      + region   = "us-east-1"
+      + tags     = {
+          + "Environment" = "Day15-task"
+          + "Name"        = "Primary-IGW-us-east-1"
+        }
+      + tags_all = {
+          + "Environment" = "Day15-task"
+          + "Name"        = "Primary-IGW-us-east-1"
+        }
+      + vpc_id   = (known after apply)
+    }
+
+  # aws_internet_gateway.secondary_igw will be created
+  + resource "aws_internet_gateway" "secondary_igw" {
+      + arn      = (known after apply)
+      + id       = (known after apply)
+      + owner_id = (known after apply)
+      + region   = "us-west-1"
+      + tags     = {
+          + "Environment" = "Day15-task"
+          + "Name"        = "Secondary-IGW-us-west-1"
+        }
+      + tags_all = {
+          + "Environment" = "Day15-task"
+          + "Name"        = "Secondary-IGW-us-west-1"
+        }
+      + vpc_id   = (known after apply)
+    }
+
+  # aws_internet_gateway.third_igw will be created
+  + resource "aws_internet_gateway" "third_igw" {
+      + arn      = (known after apply)
+      + id       = (known after apply)
+      + owner_id = (known after apply)
+      + region   = "us-east-2"
+      + tags     = {
+          + "Environment" = "Day15-task"
+          + "Name"        = "Primary-IGW-us-east-2"
+        }
+      + tags_all = {
+          + "Environment" = "Day15-task"
+          + "Name"        = "Primary-IGW-us-east-2"
+        }
+      + vpc_id   = (known after apply)
+    }
+
+  # aws_route.primary_to_secondary will be created
+  + resource "aws_route" "primary_to_secondary" {
+      + destination_cidr_block    = "10.1.0.0/16"
+      + id                        = (known after apply)
+      + instance_id               = (known after apply)
+      + instance_owner_id         = (known after apply)
+      + network_interface_id      = (known after apply)
+      + origin                    = (known after apply)
+      + region                    = "us-east-1"
+      + route_table_id            = (known after apply)
+      + state                     = (known after apply)
+      + vpc_peering_connection_id = (known after apply)
+    }
+
+  # aws_route.secondary_to_primary will be created
+  + resource "aws_route" "secondary_to_primary" {
+      + destination_cidr_block    = "10.0.0.0/16"
+      + id                        = (known after apply)
+      + instance_id               = (known after apply)
+      + instance_owner_id         = (known after apply)
+      + network_interface_id      = (known after apply)
+      + origin                    = (known after apply)
+      + region                    = "us-west-1"
+      + route_table_id            = (known after apply)
+      + state                     = (known after apply)
+      + vpc_peering_connection_id = (known after apply)
+    }
+
+  # aws_route_table.primary_rt will be created
+  + resource "aws_route_table" "primary_rt" {
+      + arn              = (known after apply)
+      + id               = (known after apply)
+      + owner_id         = (known after apply)
+      + propagating_vgws = (known after apply)
+      + region           = "us-east-1"
+      + route            = [
+          + {
+              + cidr_block                 = "0.0.0.0/0"
+              + gateway_id                 = (known after apply)
+                # (12 unchanged attributes hidden)
+            },
+        ]
+      + tags             = {
+          + "Environment" = "Day15-task"
+          + "Name"        = "Primary-Route-Table"
+        }
+      + tags_all         = {
+          + "Environment" = "Day15-task"
+          + "Name"        = "Primary-Route-Table"
+        }
+      + vpc_id           = (known after apply)
+    }
+
+  # aws_route_table.secondary_rt will be created
+  + resource "aws_route_table" "secondary_rt" {
+      + arn              = (known after apply)
+      + id               = (known after apply)
+      + owner_id         = (known after apply)
+      + propagating_vgws = (known after apply)
+      + region           = "us-west-1"
+      + route            = [
+          + {
+              + cidr_block                 = "0.0.0.0/0"
+              + gateway_id                 = (known after apply)
+                # (12 unchanged attributes hidden)
+            },
+        ]
+      + tags             = {
+          + "Environment" = "Day15-task"
+          + "Name"        = "Secondary-Route-Table"
+        }
+      + tags_all         = {
+          + "Environment" = "Day15-task"
+          + "Name"        = "Secondary-Route-Table"
+        }
+      + vpc_id           = (known after apply)
+    }
+
+  # aws_route_table.third_rt will be created
+  + resource "aws_route_table" "third_rt" {
+      + arn              = (known after apply)
+      + id               = (known after apply)
+      + owner_id         = (known after apply)
+      + propagating_vgws = (known after apply)
+      + region           = "us-east-2"
+      + route            = [
+          + {
+              + cidr_block                 = "0.0.0.0/0"
+              + gateway_id                 = (known after apply)
+                # (12 unchanged attributes hidden)
+            },
+        ]
+      + tags             = {
+          + "Environment" = "Day15-task"
+          + "Name"        = "Third-Route-Table"
+        }
+      + tags_all         = {
+          + "Environment" = "Day15-task"
+          + "Name"        = "Third-Route-Table"
+        }
+      + vpc_id           = (known after apply)
+    }
+
+  # aws_route_table_association.primary_rta will be created
+  + resource "aws_route_table_association" "primary_rta" {
+      + id             = (known after apply)
+      + region         = "us-east-1"
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # aws_route_table_association.secondary_rta will be created
+  + resource "aws_route_table_association" "secondary_rta" {
+      + id             = (known after apply)
+      + region         = "us-west-1"
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # aws_route_table_association.third_rta will be created
+  + resource "aws_route_table_association" "third_rta" {
+      + id             = (known after apply)
+      + region         = "us-east-2"
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # aws_security_group.primary_sg will be created
+  + resource "aws_security_group" "primary_sg" {
+      + arn                    = (known after apply)
+      + description            = "Security group for Primary VPC instance"
+      + egress                 = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "Allow all outbound traffic"
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "-1"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 0
+            },
+        ]
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "SSH from anywhere"
+              + from_port        = 22
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 22
+            },
+          + {
+              + cidr_blocks      = [
+                  + "10.1.0.0/16",
+                ]
+              + description      = "All traffic from Secondary VPC"
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 65535
+            },
+          + {
+              + cidr_blocks      = [
+                  + "10.1.0.0/16",
+                ]
+              + description      = "ICMP from Secondary VPC"
+              + from_port        = -1
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "icmp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = -1
+            },
+          + {
+              + cidr_blocks      = [
+                  + "10.2.0.0/16",
+                ]
+              + description      = "All traffic from Third VPC"
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 65535
+            },
+          + {
+              + cidr_blocks      = [
+                  + "10.2.0.0/16",
+                ]
+              + description      = "ICMP from Third VPC"
+              + from_port        = -1
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "icmp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = -1
+            },
+        ]
+      + name                   = "primary-vpc-sg"
+      + name_prefix            = (known after apply)
+      + owner_id               = (known after apply)
+      + region                 = "us-east-1"
+      + revoke_rules_on_delete = false
+      + tags                   = {
+          + "Environment" = "Day15"
+          + "Name"        = "Primary-VPC-SG"
+        }
+      + tags_all               = {
+          + "Environment" = "Day15"
+          + "Name"        = "Primary-VPC-SG"
+        }
+      + vpc_id                 = (known after apply)
+    }
+
+  # aws_security_group.secondary_sg will be created
+  + resource "aws_security_group" "secondary_sg" {
+      + arn                    = (known after apply)
+      + description            = "Security group for secondary VPC instance"
+      + egress                 = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "Allow all outbound traffic"
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "-1"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 0
+            },
+        ]
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "SSH from anywhere"
+              + from_port        = 22
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 22
+            },
+          + {
+              + cidr_blocks      = [
+                  + "10.0.0.0/16",
+                ]
+              + description      = "All traffic from Primary VPC"
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 65535
+            },
+          + {
+              + cidr_blocks      = [
+                  + "10.0.0.0/16",
+                ]
+              + description      = "ICMP from Primary VPC"
+              + from_port        = -1
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "icmp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = -1
+            },
+          + {
+              + cidr_blocks      = [
+                  + "10.2.0.0/16",
+                ]
+              + description      = "All traffic from the Third VPC"
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 65535
+            },
+          + {
+              + cidr_blocks      = [
+                  + "10.2.0.0/16",
+                ]
+              + description      = "ICMP from Third VPC"
+              + from_port        = -1
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "icmp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = -1
+            },
+        ]
+      + name                   = "secondary-vpc-sg"
+      + name_prefix            = (known after apply)
+      + owner_id               = (known after apply)
+      + region                 = "us-west-1"
+      + revoke_rules_on_delete = false
+      + tags                   = {
+          + "Environment" = "Day15-task"
+          + "Name"        = "Secondary-VPC-SG"
+        }
+      + tags_all               = {
+          + "Environment" = "Day15-task"
+          + "Name"        = "Secondary-VPC-SG"
+        }
+      + vpc_id                 = (known after apply)
+    }
+
+  # aws_security_group.third_sg will be created
+  + resource "aws_security_group" "third_sg" {
+      + arn                    = (known after apply)
+      + description            = "Security group for third VPC instance"
+      + egress                 = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "Allow all outbound traffic"
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "-1"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 0
+            },
+        ]
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "SHH from anywhere"
+              + from_port        = 22
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 22
+            },
+          + {
+              + cidr_blocks      = [
+                  + "10.0.0.0/16",
+                ]
+              + description      = "All traffic from Primary VPC"
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 65535
+            },
+          + {
+              + cidr_blocks      = [
+                  + "10.0.0.0/16",
+                ]
+              + description      = "ICMP from Primary VPC"
+              + from_port        = -1
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "icmp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = -1
+            },
+          + {
+              + cidr_blocks      = [
+                  + "10.1.0.0/16",
+                ]
+              + description      = "All traffic from Secondary VPC"
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 65535
+            },
+          + {
+              + cidr_blocks      = [
+                  + "10.1.0.0/16",
+                ]
+              + description      = "ICMP from Secondary VPC"
+              + from_port        = -1
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "icmp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = -1
+            },
+        ]
+      + name                   = "third-vpc-sg"
+      + name_prefix            = (known after apply)
+      + owner_id               = (known after apply)
+      + region                 = "us-east-2"
+      + revoke_rules_on_delete = false
+      + tags                   = {
+          + "Environment" = "Day15-Challenge"
+          + "Name"        = "Third-VPC-SG"
+        }
+      + tags_all               = {
+          + "Environment" = "Day15-Challenge"
+          + "Name"        = "Third-VPC-SG"
+        }
+      + vpc_id                 = (known after apply)
+    }
+
+  # aws_subnet.primary_subnet will be created
+  + resource "aws_subnet" "primary_subnet" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "us-east-1a"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.0.1.0/28"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block                                = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = true
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + region                                         = "us-east-1"
+      + tags                                           = {
+          + "Environment" = "Day15-task"
+          + "Name"        = "Primary-Subnet-us-east-1"
+        }
+      + tags_all                                       = {
+          + "Environment" = "Day15-task"
+          + "Name"        = "Primary-Subnet-us-east-1"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # aws_subnet.secondary_subnet will be created
+  + resource "aws_subnet" "secondary_subnet" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "us-west-1a"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.1.1.0/28"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block                                = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = true
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + region                                         = "us-west-1"
+      + tags                                           = {
+          + "Environment" = "Day15-Task"
+          + "Name"        = "Secondary-Subnet-us-west-1"
+        }
+      + tags_all                                       = {
+          + "Environment" = "Day15-Task"
+          + "Name"        = "Secondary-Subnet-us-west-1"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # aws_subnet.third_subnet will be created
+  + resource "aws_subnet" "third_subnet" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "us-east-2a"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.2.1.0/28"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block                                = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = true
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + region                                         = "us-east-2"
+      + tags                                           = {
+          + "Environment" = "Day15-Task"
+          + "Name"        = "Third-subnet-us-east-2"
+        }
+      + tags_all                                       = {
+          + "Environment" = "Day15-Task"
+          + "Name"        = "Third-subnet-us-east-2"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # aws_vpc.primary_vpc will be created
+  + resource "aws_vpc" "primary_vpc" {
+      + arn                                  = (known after apply)
+      + cidr_block                           = "10.0.0.0/16"
+      + default_network_acl_id               = (known after apply)
+      + default_route_table_id               = (known after apply)
+      + default_security_group_id            = (known after apply)
+      + dhcp_options_id                      = (known after apply)
+      + enable_dns_hostnames                 = true
+      + enable_dns_support                   = true
+      + enable_network_address_usage_metrics = (known after apply)
+      + id                                   = (known after apply)
+      + instance_tenancy                     = "default"
+      + ipv6_association_id                  = (known after apply)
+      + ipv6_cidr_block                      = (known after apply)
+      + ipv6_cidr_block_network_border_group = (known after apply)
+      + main_route_table_id                  = (known after apply)
+      + owner_id                             = (known after apply)
+      + region                               = "us-east-1"
+      + tags                                 = {
+          + "Name" = "Primary-VPC-us-east-1"
+        }
+      + tags_all                             = {
+          + "Name" = "Primary-VPC-us-east-1"
+        }
+    }
+
+  # aws_vpc.secondary_vpc will be created
+  + resource "aws_vpc" "secondary_vpc" {
+      + arn                                  = (known after apply)
+      + cidr_block                           = "10.1.0.0/16"
+      + default_network_acl_id               = (known after apply)
+      + default_route_table_id               = (known after apply)
+      + default_security_group_id            = (known after apply)
+      + dhcp_options_id                      = (known after apply)
+      + enable_dns_hostnames                 = true
+      + enable_dns_support                   = true
+      + enable_network_address_usage_metrics = (known after apply)
+      + id                                   = (known after apply)
+      + instance_tenancy                     = "default"
+      + ipv6_association_id                  = (known after apply)
+      + ipv6_cidr_block                      = (known after apply)
+      + ipv6_cidr_block_network_border_group = (known after apply)
+      + main_route_table_id                  = (known after apply)
+      + owner_id                             = (known after apply)
+      + region                               = "us-west-1"
+      + tags                                 = {
+          + "Name" = "Secondary-VPC-us-east-1"
+        }
+      + tags_all                             = {
+          + "Name" = "Secondary-VPC-us-east-1"
+        }
+    }
+
+  # aws_vpc.third_vpc will be created
+  + resource "aws_vpc" "third_vpc" {
+      + arn                                  = (known after apply)
+      + cidr_block                           = "10.2.0.0/16"
+      + default_network_acl_id               = (known after apply)
+      + default_route_table_id               = (known after apply)
+      + default_security_group_id            = (known after apply)
+      + dhcp_options_id                      = (known after apply)
+      + enable_dns_hostnames                 = true
+      + enable_dns_support                   = true
+      + enable_network_address_usage_metrics = (known after apply)
+      + id                                   = (known after apply)
+      + instance_tenancy                     = "default"
+      + ipv6_association_id                  = (known after apply)
+      + ipv6_cidr_block                      = (known after apply)
+      + ipv6_cidr_block_network_border_group = (known after apply)
+      + main_route_table_id                  = (known after apply)
+      + owner_id                             = (known after apply)
+      + region                               = "us-east-2"
+      + tags                                 = {
+          + "Name" = "Third-VPC-us-east-2"
+        }
+      + tags_all                             = {
+          + "Name" = "Third-VPC-us-east-2"
+        }
+    }
+
+  # aws_vpc_peering_connection.primary_to_secondary will be created
+  + resource "aws_vpc_peering_connection" "primary_to_secondary" {
+      + accept_status = (known after apply)
+      + id            = (known after apply)
+      + peer_owner_id = (known after apply)
+      + peer_region   = "us-west-1"
+      + peer_vpc_id   = (known after apply)
+      + region        = "us-east-1"
+      + tags          = {
+          + "Environment" = "Day15-Task"
+          + "Name"        = "Primary-to-Secondary-Peering"
+          + "Side"        = "Requester"
+        }
+      + tags_all      = {
+          + "Environment" = "Day15-Task"
+          + "Name"        = "Primary-to-Secondary-Peering"
+          + "Side"        = "Requester"
+        }
+      + vpc_id        = (known after apply)
+
+      + accepter (known after apply)
+
+      + requester (known after apply)
+    }
+
+  # aws_vpc_peering_connection_accepter.secondary_accepter will be created
+  + resource "aws_vpc_peering_connection_accepter" "secondary_accepter" {
+      + accept_status             = (known after apply)
+      + auto_accept               = true
+      + id                        = (known after apply)
+      + peer_owner_id             = (known after apply)
+      + peer_region               = (known after apply)
+      + peer_vpc_id               = (known after apply)
+      + region                    = "us-west-1"
+      + tags                      = {
+          + "Environment" = "Day15-task"
+          + "Name"        = "Secondary_Peering-Accepter"
+          + "Side"        = "Accepter"
+        }
+      + tags_all                  = {
+          + "Environment" = "Day15-task"
+          + "Name"        = "Secondary_Peering-Accepter"
+          + "Side"        = "Accepter"
+        }
+      + vpc_id                    = (known after apply)
+      + vpc_peering_connection_id = (known after apply)
+
+      + accepter (known after apply)
+
+      + requester (known after apply)
+    }
+
+Plan: 25 to add, 0 to change, 0 to destroy.
+aws_vpc.primary_vpc: Creating...
+aws_vpc.secondary_vpc: Creating...
+aws_vpc.third_vpc: Creating...
+aws_vpc.third_vpc: Creation complete after 5s []
+aws_internet_gateway.third_igw: Creating...
+aws_subnet.third_subnet: Creating...
+aws_security_group.third_sg: Creating...
+aws_vpc.primary_vpc: Creation complete after 6s []
+aws_internet_gateway.primary_igw: Creating...
+aws_subnet.primary_subnet: Creating...
+aws_security_group.primary_sg: Creating...
+aws_vpc.secondary_vpc: Creation complete after 5s []
+aws_internet_gateway.secondary_igw: Creating...
+aws_vpc_peering_connection.primary_to_secondary: Creating...
+aws_subnet.secondary_subnet: Creating...
+aws_security_group.secondary_sg: Creating...
+aws_internet_gateway.third_igw: Creation complete after 1s []
+aws_route_table.third_rt: Creating...
+aws_internet_gateway.primary_igw: Creation complete after 2s []
+aws_route_table.primary_rt: Creating...
+aws_internet_gateway.secondary_igw: Creation complete after 2s []
+aws_route_table.secondary_rt: Creating...
+aws_vpc_peering_connection.primary_to_secondary: Creation complete after 3s []
+aws_vpc_peering_connection_accepter.secondary_accepter: Creating...
+aws_route_table.third_rt: Creation complete after 3s []
+aws_route_table.primary_rt: Creation complete after 2s []
+aws_route_table.secondary_rt: Creation complete after 3s []
+aws_security_group.third_sg: Creation complete after 5s []
+aws_security_group.secondary_sg: Creation complete after 6s []
+aws_security_group.primary_sg: Creation complete after 7s []
+aws_vpc_peering_connection_accepter.secondary_accepter: Creation complete after 6s []
+aws_route.primary_to_secondary: Creating...
+aws_route.secondary_to_primary: Creating...
+aws_subnet.third_subnet: Still creating... [00m10s elapsed]
+aws_subnet.primary_subnet: Still creating... [00m10s elapsed]
+aws_subnet.secondary_subnet: Still creating... [00m10s elapsed]
+aws_route.primary_to_secondary: Creation complete after 2s []
+aws_route.secondary_to_primary: Creation complete after 2s []
+aws_subnet.third_subnet: Creation complete after 12s []
+aws_route_table_association.third_rta: Creating...
+aws_instance.third_instance: Creating...
+aws_subnet.primary_subnet: Creation complete after 13s []
+aws_route_table_association.primary_rta: Creating...
+aws_instance.primary_instance: Creating...
+aws_route_table_association.third_rta: Creation complete after 1s []
+aws_subnet.secondary_subnet: Creation complete after 13s []
+aws_route_table_association.secondary_rta: Creating...
+aws_instance.secondary_instance: Creating...
+aws_route_table_association.primary_rta: Creation complete after 1s []
+aws_route_table_association.secondary_rta: Creation complete after 2s []
+aws_instance.third_instance: Still creating... [00m10s elapsed]
+aws_instance.primary_instance: Still creating... [00m10s elapsed]
+aws_instance.secondary_instance: Still creating... [00m10s elapsed]
+aws_instance.third_instance: Creation complete after 16s []
+aws_instance.primary_instance: Creation complete after 16s []
+aws_instance.secondary_instance: Creation complete after 17s []
+
+Apply complete! Resources: 25 added, 0 changed, 0 destroyed.
+
+   pwsh MEM: 76% | 10/13GB   44s 831ms  (base) 
+╭─ ♥ 22:41 |                TaskCode 
+╰─ 

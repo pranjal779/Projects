@@ -1,0 +1,40 @@
+
+╷
+│ Error: creating Route in Route Table (rtb-0ec4860038c7cebc6) with destination (10.1.0.0/16): operation error EC2: CreateRoute, https response error StatusCode: 400, RequestID: 9dfc222a-6a30-417e-9f77-71426d0ef0b9, apierror InvalidParameterValue: The destination CIDR block 10.1.0.0/16 is equal to or more specific than one of this VPC's CIDR blocks. This route can target only an interface or an instance.
+│ 
+│   with aws_route.secondary_to_primary,
+│   on main.tf line 249, in resource "aws_route" "secondary_to_primary":
+│  249: resource "aws_route" "secondary_to_primary" {
+│ 
+╵
+╷
+│ Error: creating EC2 Instance: operation error EC2: RunInstances, https response error StatusCode: 400, RequestID: dae6dfa7-fef3-4bfc-8151-166c80832489, api error InvalidKeyPair.NotFound: The key pair 'vpc-peering-task-region-primary' does not exist
+│ 
+│   with aws_instance.primary_instance,
+│   on main.tf line 447, in resource "aws_instance" "primary_instance":
+│  447: resource "aws_instance" "primary_instance" {
+│ 
+╵
+╷
+│ Error: creating EC2 Instance: operation error EC2: RunInstances, https response error StatusCode: 400, RequestID: ac6a9b14-fff3-4b40-8f20-0bfa9194bda8, api error InvalidKeyPair.NotFound: The key pair 'vpc-peering-task-region-secondary' does not exist
+│ 
+│   with aws_instance.secondary_instance,
+│   on main.tf line 467, in resource "aws_instance" "secondary_instance":
+│  467: resource "aws_instance" "secondary_instance" {
+│ 
+╵
+╷
+│ Error: creating EC2 Instance: operation error EC2: RunInstances, https response error StatusCode: 400, RequestID: f8912e4d-9f2e-4c67-84b8-173ea439e63a, api error InvalidKeyPair.NotFound: The key pair 'vpc-peering-task-region-third' does not exist
+│ 
+│   with aws_instance.third_instance,
+│   on main.tf line 487, in resource "aws_instance" "third_instance":
+│  487: resource "aws_instance" "third_instance" {
+│ 
+╵
+
+   pwsh MEM: 76% | 10/13GB   30s 440ms  (base) 
+╭─ ♥ 20:23 |                TaskCode 
+╰─ 
+
+-------
+
