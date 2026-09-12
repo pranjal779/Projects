@@ -1,0 +1,223 @@
+ terraform apply
+data.aws_region.current: Reading...
+aws_cloudfront_origin_access_control.origin: Refreshing state... [id=E4#@$@##@$@#LD]
+aws_s3_bucket.taskbucket: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+data.aws_region.current: Read complete after 0s [id=us-east-1]
+aws_s3_bucket_public_access_block.task_block: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+aws_s3_object.object["Index.html"]: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026/Index.html]
+aws_s3_object.object["style.css"]: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026/style.css]
+aws_s3_object.object["script.js"]: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026/script.js]
+
+Terraform used the selected providers to generate the following execution plan. Resource
+actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_cloudfront_distribution.s3_distribution will be created
+  + resource "aws_cloudfront_distribution" "s3_distribution" {
+      + arn                             = (known after apply)
+      + caller_reference                = (known after apply)
+      + comment                         = "Some comment"
+      + continuous_deployment_policy_id = (known after apply)
+      + default_root_object             = "index.html"
+      + domain_name                     = (known after apply)
+      + enabled                         = true
+      + etag                            = (known after apply)
+      + hosted_zone_id                  = (known after apply)
+      + http_version                    = "http2"
+      + id                              = (known after apply)
+      + in_progress_validation_batches  = (known after apply)
+      + is_ipv6_enabled                 = true
+      + last_modified_time              = (known after apply)
+      + logging_v1_enabled              = (known after apply)
+      + price_class                     = "PriceClass_100"
+      + retain_on_delete                = false
+      + staging                         = false
+      + status                          = (known after apply)
+      + tags                            = {
+          + "Environment" = "production"
+        }
+      + tags_all                        = {
+          + "Environment" = "production"
+        }
+      + trusted_key_groups              = (known after apply)
+      + trusted_signers                 = (known after apply)
+      + wait_for_deployment             = true
+
+      + default_cache_behavior {
+          + allowed_methods        = [
+              + "GET",
+              + "HEAD",
+            ]
+          + cached_methods         = [
+              + "GET",
+              + "HEAD",
+            ]
+          + compress               = false
+          + default_ttl            = 3600
+          + max_ttl                = 86400
+          + min_ttl                = 0
+          + target_origin_id       = "s3-mylearning-tfawsdayfourteen-taskbucket-2026"
+          + trusted_key_groups     = (known after apply)
+          + trusted_signers        = (known after apply)
+          + viewer_protocol_policy = "redirect-to-https"
+
+          + forwarded_values {
+              + headers                 = (known after apply)
+              + query_string            = false
+              + query_string_cache_keys = (known after apply)
+
+              + cookies {
+                  + forward           = "none"
+                  + whitelisted_names = (known after apply)
+                }
+            }
+
+          + grpc_config (known after apply)
+        }
+
+      + origin {
+          + connection_attempts         = 3
+          + connection_timeout          = 10
+          + domain_name                 = "mylearning-tfawsdayfourteen-taskbucket-2026.s3.us-east-1.amazonaws.com"
+          + origin_access_control_id    = "E4MF0LS6N2ALD"
+          + origin_id                   = "s3-mylearning-tfawsdayfourteen-taskbucket-2026"
+          + response_completion_timeout = (known after apply)
+            # (1 unchanged attribute hidden)
+        }
+
+      + restrictions {
+          + geo_restriction {
+              + locations        = (known after apply)
+              + restriction_type = "none"
+            }
+        }
+
+      + viewer_certificate {
+          + cloudfront_default_certificate = true
+          + minimum_protocol_version       = "TLSv1"
+        }
+    }
+
+  # aws_s3_bucket_policy.allow_cloudfront will be created
+  + resource "aws_s3_bucket_policy" "allow_cloudfront" {
+      + bucket = "mylearning-tfawsdayfourteen-taskbucket-2026"
+      + id     = (known after apply)
+      + policy = (known after apply)
+      + region = "us-east-1"
+    }
+
+Plan: 2 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+aws_cloudfront_distribution.s3_distribution: Creating...
+aws_cloudfront_distribution.s3_distribution: Still creating... [00m10s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [00m20s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [00m30s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [00m40s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [00m50s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [01m00s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [01m10s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [01m20s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [01m30s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [01m40s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [01m50s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [02m00s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [02m10s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [02m20s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [02m30s elapsed]
+aws_cloudfront_distribution.s3_distribution: Creation complete after 2m32s [id=E11#@$@##@$@#68]
+aws_s3_bucket_policy.allow_cloudfront: Creating...
+aws_s3_bucket_policy.allow_cloudfront: Still creating... [00m10s elapsed]
+aws_s3_bucket_policy.allow_cloudfront: Still creating... [00m20s elapsed]
+aws_s3_bucket_policy.allow_cloudfront: Still creating... [00m30s elapsed]
+aws_s3_bucket_policy.allow_cloudfront: Still creating... [00m40s elapsed]
+aws_s3_bucket_policy.allow_cloudfront: Still creating... [00m50s elapsed]
+aws_s3_bucket_policy.allow_cloudfront: Still creating... [01m00s elapsed]
+aws_s3_bucket_policy.allow_cloudfront: Still creating... [01m10s elapsed]
+aws_s3_bucket_policy.allow_cloudfront: Still creating... [01m20s elapsed]
+aws_s3_bucket_policy.allow_cloudfront: Still creating... [01m30s elapsed]
+aws_s3_bucket_policy.allow_cloudfront: Still creating... [01m40s elapsed]
+aws_s3_bucket_policy.allow_cloudfront: Still creating... [01m50s elapsed]
+aws_s3_bucket_policy.allow_cloudfront: Still creating... [02m00s elapsed]
+aws_s3_bucket_policy.allow_cloudfront: Still creating... [02m10s elapsed]
+╷
+│ Error: putting S3 Bucket (mylearning-tfawsdayfourteen-taskbucket-2026) Policy: operation error S3: PutBucketPolicy, https response error StatusCode: 400, RequestID: S27NEKDHR0F0EAA2, HostID: RTCJbkVhCCHRpFiIAu8ZfRrTJXhZEhMT3R4zpaNkedGZHSOFS7y1iOI29PrrD33N2AV9hmTxNSA=, api error MalformedPolicy: Action does not apply to any resource(s) in statement
+│ 
+│   with aws_s3_bucket_policy.allow_cloudfront,
+│   on main.tf line 25, in resource "aws_s3_bucket_policy" "allow_cloudfront":
+│   25: resource "aws_s3_bucket_policy" "allow_cloudfront" {
+│ 
+╵
+
+
+--------
+
+ terraform apply
+data.aws_region.current: Reading...
+aws_cloudfront_origin_access_control.origin: Refreshing state... [id=E4#@$@##@$@#LD]
+aws_s3_bucket.taskbucket: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+data.aws_region.current: Read complete after 0s [id=us-east-1]
+aws_s3_bucket_public_access_block.task_block: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+aws_cloudfront_distribution.s3_distribution: Refreshing state... [id=E#@$@##@$@#68]
+aws_s3_object.object["script.js"]: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026/script.js]
+aws_s3_object.object["Index.html"]: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026/Index.html]
+aws_s3_object.object["style.css"]: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026/style.css]
+
+Terraform used the selected providers to generate the following execution plan. Resource
+actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_s3_bucket_policy.allow_cloudfront will be created
+  + resource "aws_s3_bucket_policy" "allow_cloudfront" {
+      + bucket = "mylearning-tfawsdayfourteen-taskbucket-2026"
+      + id     = (known after apply)
+      + policy = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "s3:GetObject",
+                        ]
+                      + Condition = {
+                          + StringEquals = {
+                              + "AWS:SourceArn" = "arn:aws:cloudfront::3#@$@##@$@#31:distribution/E1#@$@##@$@#68"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "cloudfront.amazonaws.com"
+                        }
+                      + Resource  = "arn:aws:s3:::mylearning-tfawsdayfourteen-taskbucket-2026/*"
+                      + Sid       = "AllowCloudFrontGetObject"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + region = "us-east-1"
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+aws_s3_bucket_policy.allow_cloudfront: Creating...
+aws_s3_bucket_policy.allow_cloudfront: Creation complete after 1s [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+
+   pwsh MEM: 79% | 10/13GB   46s 439ms  (base) 
+╭─ ♥ 15:00 |                Task 

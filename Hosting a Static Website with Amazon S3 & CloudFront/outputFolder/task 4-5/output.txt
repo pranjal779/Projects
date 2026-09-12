@@ -1,0 +1,716 @@
+ ls
+
+        Directory: C:\Users\pranj\Desktop\my code\30 Days of AWS Terraform\Day14\Task
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d----          6/5/2026   9:56 AM                  .terraform
+d----          6/5/2026   3:59 PM                  outputFolder
+d----          6/6/2026   3:55 PM                  www
+-a---          6/5/2026  10:00 AM           1406   .terraform.lock.hcl
+-a---          6/4/2026  11:28 PM            155   backend.tf
+-a---          6/5/2026   2:30 PM             66   locals.tf
+-a---          6/6/2026   5:31 PM           6764   main.tf
+-a---          6/3/2026  10:38 AM            201   providers.tf
+-a---          6/5/2026   4:00 PM            182   terraform.tfstate
+-a---          6/5/2026   3:57 PM          18670   terraform.tfstate.backup
+-a---          6/6/2026   5:30 PM            166   terraform.tfvars
+-a---          6/6/2026   5:30 PM           3088   variables.tf
+
+ ls .\www\
+
+        Directory: C:\Users\pranj\Desktop\my code\30 Days of AWS Terraform\Day14\Task\www
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a---          6/6/2026   4:15 PM            565   error.html
+-a---          6/5/2026   3:39 PM           3215   index.html
+-a---          6/1/2026   6:44 PM           4809   script.js
+-a---          6/1/2026   6:44 PM           5626   style.css
+
+
+   pwsh MEM: 74% | 10/13GB   32ms  (base) 
+╭─ ♥ 17:34 |                Task 
+╰─ 
+
+ terraform plan
+data.aws_region.current: Reading...
+data.aws_region.current: Read complete after 0s [id=us-east-1]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_cloudfront_distribution.s3_distribution will be created
+  + resource "aws_cloudfront_distribution" "s3_distribution" {
+      + arn                             = (known after apply)
+      + caller_reference                = (known after apply)
+      + comment                         = "Some comment"
+      + continuous_deployment_policy_id = (known after apply)
+      + default_root_object             = "index.html"
+      + domain_name                     = (known after apply)
+      + enabled                         = true
+      + etag                            = (known after apply)
+      + hosted_zone_id                  = (known after apply)
+      + http_version                    = "http2"
+      + id                              = (known after apply)
+      + in_progress_validation_batches  = (known after apply)
+      + is_ipv6_enabled                 = true
+      + last_modified_time              = (known after apply)
+      + logging_v1_enabled              = (known after apply)
+      + price_class                     = "PriceClass_100"
+      + retain_on_delete                = false
+      + staging                         = false
+      + status                          = (known after apply)
+      + tags                            = {
+          + "Environment" = "staging"
+        }
+      + tags_all                        = {
+          + "Environment" = "staging"
+        }
+      + trusted_key_groups              = (known after apply)
+      + trusted_signers                 = (known after apply)
+      + wait_for_deployment             = true
+
+      + custom_error_response {
+          + error_caching_min_ttl = 10
+          + error_code            = 403
+          + response_code         = 403
+          + response_page_path    = "/error.html"
+        }
+      + custom_error_response {
+          + error_caching_min_ttl = 10
+          + error_code            = 404
+          + response_code         = 404
+          + response_page_path    = "/error.html"
+        }
+
+      + default_cache_behavior {
+          + allowed_methods            = [
+              + "GET",
+              + "HEAD",
+            ]
+          + cached_methods             = [
+              + "GET",
+              + "HEAD",
+            ]
+          + compress                   = false
+          + default_ttl                = 3600
+          + max_ttl                    = 86400
+          + min_ttl                    = 0
+          + response_headers_policy_id = (known after apply)
+          + target_origin_id           = (known after apply)
+          + trusted_key_groups         = (known after apply)
+          + trusted_signers            = (known after apply)
+          + viewer_protocol_policy     = "redirect-to-https"
+
+          + forwarded_values {
+              + headers                 = (known after apply)
+              + query_string            = false
+              + query_string_cache_keys = (known after apply)
+
+              + cookies {
+                  + forward           = "none"
+                  + whitelisted_names = (known after apply)
+                }
+            }
+
+          + grpc_config (known after apply)
+        }
+
+      + origin {
+          + connection_attempts         = 3
+          + connection_timeout          = 10
+          + domain_name                 = (known after apply)
+          + origin_access_control_id    = (known after apply)
+          + origin_id                   = (known after apply)
+          + response_completion_timeout = (known after apply)
+            # (1 unchanged attribute hidden)
+        }
+
+      + restrictions {
+          + geo_restriction {
+              + locations        = (known after apply)
+              + restriction_type = "none"
+            }
+        }
+
+      + viewer_certificate {
+          + cloudfront_default_certificate = true
+          + minimum_protocol_version       = "TLSv1"
+        }
+    }
+
+  # aws_cloudfront_origin_access_control.origin will be created
+  + resource "aws_cloudfront_origin_access_control" "origin" {
+      + arn                               = (known after apply)
+      + description                       = "Example Policy"
+      + etag                              = (known after apply)
+      + id                                = (known after apply)
+      + name                              = "demo-origin-pranj-day14"
+      + origin_access_control_origin_type = "s3"
+      + signing_behavior                  = "always"
+      + signing_protocol                  = "sigv4"
+    }
+
+  # aws_cloudfront_response_headers_policy.security_headers will be created
+  + resource "aws_cloudfront_response_headers_policy" "security_headers" {
+      + arn  = (known after apply)
+      + etag = (known after apply)
+      + id   = (known after apply)
+      + name = "day14-security-headers-policy"
+
+      + security_headers_config {
+          + content_type_options {
+              + override = true
+            }
+          + frame_options {
+              + frame_option = "DENY"
+              + override     = true
+            }
+          + referrer_policy {
+              + override        = true
+              + referrer_policy = "same-origin"
+            }
+          + strict_transport_security {
+              + access_control_max_age_sec = 31536000
+              + include_subdomains         = true
+              + override                   = true
+            }
+          + xss_protection {
+              + mode_block = true
+              + override   = true
+              + protection = true
+            }
+        }
+    }
+
+  # aws_s3_bucket.taskbucket will be created
+  + resource "aws_s3_bucket" "taskbucket" {
+      + acceleration_status         = (known after apply)
+      + acl                         = (known after apply)
+      + arn                         = (known after apply)
+      + bucket                      = "mylearning-tfawsdayfourteen-taskbucket-2026"
+      + bucket_domain_name          = (known after apply)
+      + bucket_namespace            = (known after apply)
+      + bucket_prefix               = (known after apply)
+      + bucket_region               = (known after apply)
+      + bucket_regional_domain_name = (known after apply)
+      + force_destroy               = false
+      + hosted_zone_id              = (known after apply)
+      + id                          = (known after apply)
+      + object_lock_enabled         = (known after apply)
+      + policy                      = (known after apply)
+      + region                      = "us-east-1"
+      + request_payer               = (known after apply)
+      + tags_all                    = (known after apply)
+      + website_domain              = (known after apply)
+      + website_endpoint            = (known after apply)
+
+      + cors_rule (known after apply)
+
+      + grant (known after apply)
+
+      + lifecycle_rule (known after apply)
+
+      + logging (known after apply)
+
+      + object_lock_configuration (known after apply)
+
+      + replication_configuration (known after apply)
+
+      + server_side_encryption_configuration (known after apply)
+
+      + versioning (known after apply)
+
+      + website (known after apply)
+    }
+
+  # aws_s3_bucket_policy.allow_cloudfront will be created
+  + resource "aws_s3_bucket_policy" "allow_cloudfront" {
+      + bucket = (known after apply)
+      + id     = (known after apply)
+      + policy = (known after apply)
+      + region = "us-east-1"
+    }
+
+  # aws_s3_bucket_public_access_block.task_block will be created
+  + resource "aws_s3_bucket_public_access_block" "task_block" {
+      + block_public_acls       = true
+      + block_public_policy     = true
+      + bucket                  = (known after apply)
+      + id                      = (known after apply)
+      + ignore_public_acls      = true
+      + region                  = "us-east-1"
+      + restrict_public_buckets = true
+    }
+
+  # aws_s3_object.object["error.html"] will be created
+  + resource "aws_s3_object" "object" {
+      + acl                    = (known after apply)
+      + arn                    = (known after apply)
+      + bucket                 = (known after apply)
+      + bucket_key_enabled     = (known after apply)
+      + checksum_crc32         = (known after apply)
+      + checksum_crc32c        = (known after apply)
+      + checksum_crc64nvme     = (known after apply)
+      + checksum_sha1          = (known after apply)
+      + checksum_sha256        = (known after apply)
+      + content_type           = "text/html"
+      + etag                   = "2f4c6c------------4c70bafc1ca"
+      + force_destroy          = false
+      + id                     = (known after apply)
+      + key                    = "error.html"
+      + kms_key_id             = (known after apply)
+      + region                 = "us-east-1"
+      + server_side_encryption = (known after apply)
+      + source                 = "./www/error.html"
+      + storage_class          = (known after apply)
+      + tags_all               = (known after apply)
+      + version_id             = (known after apply)
+    }
+
+  # aws_s3_object.object["index.html"] will be created
+  + resource "aws_s3_object" "object" {
+      + acl                    = (known after apply)
+      + arn                    = (known after apply)
+      + bucket                 = (known after apply)
+      + bucket_key_enabled     = (known after apply)
+      + checksum_crc32         = (known after apply)
+      + checksum_crc32c        = (known after apply)
+      + checksum_crc64nvme     = (known after apply)
+      + checksum_sha1          = (known after apply)
+      + checksum_sha256        = (known after apply)
+      + content_type           = "text/html"
+      + etag                   = "84ce5f------------758770dc1be4"
+      + force_destroy          = false
+      + id                     = (known after apply)
+      + key                    = "index.html"
+      + kms_key_id             = (known after apply)
+      + region                 = "us-east-1"
+      + server_side_encryption = (known after apply)
+      + source                 = "./www/index.html"
+      + storage_class          = (known after apply)
+      + tags_all               = (known after apply)
+      + version_id             = (known after apply)
+    }
+
+  # aws_s3_object.object["script.js"] will be created
+  + resource "aws_s3_object" "object" {
+      + acl                    = (known after apply)
+      + arn                    = (known after apply)
+      + bucket                 = (known after apply)
+      + bucket_key_enabled     = (known after apply)
+      + checksum_crc32         = (known after apply)
+      + checksum_crc32c        = (known after apply)
+      + checksum_crc64nvme     = (known after apply)
+      + checksum_sha1          = (known after apply)
+      + checksum_sha256        = (known after apply)
+      + content_type           = "application/javascript"
+      + etag                   = "2addcaec21f0bf2a46be1476c04d4c31"
+      + force_destroy          = false
+      + id                     = (known after apply)
+      + key                    = "script.js"
+      + kms_key_id             = (known after apply)
+      + region                 = "us-east-1"
+      + server_side_encryption = (known after apply)
+      + source                 = "./www/script.js"
+      + storage_class          = (known after apply)
+      + tags_all               = (known after apply)
+      + version_id             = (known after apply)
+    }
+
+  # aws_s3_object.object["style.css"] will be created
+  + resource "aws_s3_object" "object" {
+      + acl                    = (known after apply)
+      + arn                    = (known after apply)
+      + bucket                 = (known after apply)
+      + bucket_key_enabled     = (known after apply)
+      + checksum_crc32         = (known after apply)
+      + checksum_crc32c        = (known after apply)
+      + checksum_crc64nvme     = (known after apply)
+      + checksum_sha1          = (known after apply)
+      + checksum_sha256        = (known after apply)
+      + content_type           = "text/css"
+      + etag                   = "7c44fb---------889ab5419a2d"
+      + force_destroy          = false
+      + id                     = (known after apply)
+      + key                    = "style.css"
+      + kms_key_id             = (known after apply)
+      + region                 = "us-east-1"
+      + server_side_encryption = (known after apply)
+      + source                 = "./www/style.css"
+      + storage_class          = (known after apply)
+      + tags_all               = (known after apply)
+      + version_id             = (known after apply)
+    }
+
+Plan: 10 to add, 0 to change, 0 to destroy.
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
+ terraform apply
+data.aws_region.current: Reading...
+data.aws_region.current: Read complete after 0s [id=us-east-1]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_cloudfront_distribution.s3_distribution will be created
+  + resource "aws_cloudfront_distribution" "s3_distribution" {
+      + arn                             = (known after apply)
+      + caller_reference                = (known after apply)
+      + comment                         = "Some comment"
+      + continuous_deployment_policy_id = (known after apply)
+      + default_root_object             = "index.html"
+      + domain_name                     = (known after apply)
+      + enabled                         = true
+      + etag                            = (known after apply)
+      + hosted_zone_id                  = (known after apply)
+      + http_version                    = "http2"
+      + id                              = (known after apply)
+      + in_progress_validation_batches  = (known after apply)
+      + is_ipv6_enabled                 = true
+      + last_modified_time              = (known after apply)
+      + logging_v1_enabled              = (known after apply)
+      + price_class                     = "PriceClass_100"
+      + retain_on_delete                = false
+      + staging                         = false
+      + status                          = (known after apply)
+      + tags                            = {
+          + "Environment" = "staging"
+        }
+      + tags_all                        = {
+          + "Environment" = "staging"
+        }
+      + trusted_key_groups              = (known after apply)
+      + trusted_signers                 = (known after apply)
+      + wait_for_deployment             = true
+
+      + custom_error_response {
+          + error_caching_min_ttl = 10
+          + error_code            = 403
+          + response_code         = 403
+          + response_page_path    = "/error.html"
+        }
+      + custom_error_response {
+          + error_caching_min_ttl = 10
+          + error_code            = 404
+          + response_code         = 404
+          + response_page_path    = "/error.html"
+        }
+
+      + default_cache_behavior {
+          + allowed_methods            = [
+              + "GET",
+              + "HEAD",
+            ]
+          + cached_methods             = [
+              + "GET",
+              + "HEAD",
+            ]
+          + compress                   = false
+          + default_ttl                = 3600
+          + max_ttl                    = 86400
+          + min_ttl                    = 0
+          + response_headers_policy_id = (known after apply)
+          + target_origin_id           = (known after apply)
+          + trusted_key_groups         = (known after apply)
+          + trusted_signers            = (known after apply)
+          + viewer_protocol_policy     = "redirect-to-https"
+
+          + forwarded_values {
+              + headers                 = (known after apply)
+              + query_string            = false
+              + query_string_cache_keys = (known after apply)
+
+              + cookies {
+                  + forward           = "none"
+                  + whitelisted_names = (known after apply)
+                }
+            }
+
+          + grpc_config (known after apply)
+        }
+
+      + origin {
+          + connection_attempts         = 3
+          + connection_timeout          = 10
+          + domain_name                 = (known after apply)
+          + origin_access_control_id    = (known after apply)
+          + origin_id                   = (known after apply)
+          + response_completion_timeout = (known after apply)
+            # (1 unchanged attribute hidden)
+        }
+
+      + restrictions {
+          + geo_restriction {
+              + locations        = (known after apply)
+              + restriction_type = "none"
+            }
+        }
+
+      + viewer_certificate {
+          + cloudfront_default_certificate = true
+          + minimum_protocol_version       = "TLSv1"
+        }
+    }
+
+  # aws_cloudfront_origin_access_control.origin will be created
+  + resource "aws_cloudfront_origin_access_control" "origin" {
+      + arn                               = (known after apply)
+      + description                       = "Example Policy"
+      + etag                              = (known after apply)
+      + id                                = (known after apply)
+      + name                              = "demo-origin-pranj-day14"
+      + origin_access_control_origin_type = "s3"
+      + signing_behavior                  = "always"
+      + signing_protocol                  = "sigv4"
+    }
+
+  # aws_cloudfront_response_headers_policy.security_headers will be created
+  + resource "aws_cloudfront_response_headers_policy" "security_headers" {
+      + arn  = (known after apply)
+      + etag = (known after apply)
+      + id   = (known after apply)
+      + name = "day14-security-headers-policy"
+
+      + security_headers_config {
+          + content_type_options {
+              + override = true
+            }
+          + frame_options {
+              + frame_option = "DENY"
+              + override     = true
+            }
+          + referrer_policy {
+              + override        = true
+              + referrer_policy = "same-origin"
+            }
+          + strict_transport_security {
+              + access_control_max_age_sec = 31536000
+              + include_subdomains         = true
+              + override                   = true
+            }
+          + xss_protection {
+              + mode_block = true
+              + override   = true
+              + protection = true
+            }
+        }
+    }
+
+  # aws_s3_bucket.taskbucket will be created
+  + resource "aws_s3_bucket" "taskbucket" {
+      + acceleration_status         = (known after apply)
+      + acl                         = (known after apply)
+      + arn                         = (known after apply)
+      + bucket                      = "mylearning-tfawsdayfourteen-taskbucket-2026"
+      + bucket_domain_name          = (known after apply)
+      + bucket_namespace            = (known after apply)
+      + bucket_prefix               = (known after apply)
+      + bucket_region               = (known after apply)
+      + bucket_regional_domain_name = (known after apply)
+      + force_destroy               = false
+      + hosted_zone_id              = (known after apply)
+      + id                          = (known after apply)
+      + object_lock_enabled         = (known after apply)
+      + policy                      = (known after apply)
+      + region                      = "us-east-1"
+      + request_payer               = (known after apply)
+      + tags_all                    = (known after apply)
+      + website_domain              = (known after apply)
+      + website_endpoint            = (known after apply)
+
+      + cors_rule (known after apply)
+
+      + grant (known after apply)
+
+      + lifecycle_rule (known after apply)
+
+      + logging (known after apply)
+
+      + object_lock_configuration (known after apply)
+
+      + replication_configuration (known after apply)
+
+      + server_side_encryption_configuration (known after apply)
+
+      + versioning (known after apply)
+
+      + website (known after apply)
+    }
+
+  # aws_s3_bucket_policy.allow_cloudfront will be created
+  + resource "aws_s3_bucket_policy" "allow_cloudfront" {
+      + bucket = (known after apply)
+      + id     = (known after apply)
+      + policy = (known after apply)
+      + region = "us-east-1"
+    }
+
+  # aws_s3_bucket_public_access_block.task_block will be created
+  + resource "aws_s3_bucket_public_access_block" "task_block" {
+      + block_public_acls       = true
+      + block_public_policy     = true
+      + bucket                  = (known after apply)
+      + id                      = (known after apply)
+      + ignore_public_acls      = true
+      + region                  = "us-east-1"
+      + restrict_public_buckets = true
+    }
+
+  # aws_s3_object.object["error.html"] will be created
+  + resource "aws_s3_object" "object" {
+      + acl                    = (known after apply)
+      + arn                    = (known after apply)
+      + bucket                 = (known after apply)
+      + bucket_key_enabled     = (known after apply)
+      + checksum_crc32         = (known after apply)
+      + checksum_crc32c        = (known after apply)
+      + checksum_crc64nvme     = (known after apply)
+      + checksum_sha1          = (known after apply)
+      + checksum_sha256        = (known after apply)
+      + content_type           = "text/html"
+      + etag                   = "2f4xzx341245bc05c684e7264c70---------a"
+      + force_destroy          = false
+      + id                     = (known after apply)
+      + key                    = "error.html"
+      + kms_key_id             = (known after apply)
+      + region                 = "us-east-1"
+      + server_side_encryption = (known after apply)
+      + source                 = "./www/error.html"
+      + storage_class          = (known after apply)
+      + tags_all               = (known after apply)
+      + version_id             = (known after apply)
+    }
+
+  # aws_s3_object.object["index.html"] will be created
+  + resource "aws_s3_object" "object" {
+      + acl                    = (known after apply)
+      + arn                    = (known after apply)
+      + bucket                 = (known after apply)
+      + bucket_key_enabled     = (known after apply)
+      + checksum_crc32         = (known after apply)
+      + checksum_crc32c        = (known after apply)
+      + checksum_crc64nvme     = (known after apply)
+      + checksum_sha1          = (known after apply)
+      + checksum_sha256        = (known after apply)
+      + content_type           = "text/html"
+      + etag                   = "84ce5<asdasdqw>0dc1be4"
+      + force_destroy          = false
+      + id                     = (known after apply)
+      + key                    = "index.html"
+      + kms_key_id             = (known after apply)
+      + region                 = "us-east-1"
+      + server_side_encryption = (known after apply)
+      + source                 = "./www/index.html"
+      + storage_class          = (known after apply)
+      + tags_all               = (known after apply)
+      + version_id             = (known after apply)
+    }
+
+  # aws_s3_object.object["script.js"] will be created
+  + resource "aws_s3_object" "object" {
+      + acl                    = (known after apply)
+      + arn                    = (known after apply)
+      + bucket                 = (known after apply)
+      + bucket_key_enabled     = (known after apply)
+      + checksum_crc32         = (known after apply)
+      + checksum_crc32c        = (known after apply)
+      + checksum_crc64nvme     = (known after apply)
+      + checksum_sha1          = (known after apply)
+      + checksum_sha256        = (known after apply)
+      + content_type           = "application/javascript"
+      + etag                   = "2addcaec21%%%%%%%%%%%e1476c04d4c31"
+      + force_destroy          = false
+      + id                     = (known after apply)
+      + key                    = "script.js"
+      + kms_key_id             = (known after apply)
+      + region                 = "us-east-1"
+      + server_side_encryption = (known after apply)
+      + source                 = "./www/script.js"
+      + storage_class          = (known after apply)
+      + tags_all               = (known after apply)
+      + version_id             = (known after apply)
+    }
+
+  # aws_s3_object.object["style.css"] will be created
+  + resource "aws_s3_object" "object" {
+      + acl                    = (known after apply)
+      + arn                    = (known after apply)
+      + bucket                 = (known after apply)
+      + bucket_key_enabled     = (known after apply)
+      + checksum_crc32         = (known after apply)
+      + checksum_crc32c        = (known after apply)
+      + checksum_crc64nvme     = (known after apply)
+      + checksum_sha1          = (known after apply)
+      + checksum_sha256        = (known after apply)
+      + content_type           = "text/css"
+      + etag                   = "7c44fb9a3f7$$$$$$$$$$b5419a2d"
+      + force_destroy          = false
+      + id                     = (known after apply)
+      + key                    = "style.css"
+      + kms_key_id             = (known after apply)
+      + region                 = "us-east-1"
+      + server_side_encryption = (known after apply)
+      + source                 = "./www/style.css"
+      + storage_class          = (known after apply)
+      + tags_all               = (known after apply)
+      + version_id             = (known after apply)
+    }
+
+Plan: 10 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+aws_cloudfront_origin_access_control.origin: Creating...
+aws_cloudfront_response_headers_policy.security_headers: Creating...
+aws_s3_bucket.taskbucket: Creating...
+aws_cloudfront_origin_access_control.origin: Creation complete after 1s [id=EIDVP5J6ZAHKY]
+aws_cloudfront_response_headers_policy.security_headers: Creation complete after 1s [id=096179a8-5b03-4301-9be1-eff815f2c7ce]
+aws_s3_bucket.taskbucket: Creation complete after 9s [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+aws_s3_bucket_public_access_block.task_block: Creating...
+aws_s3_object.object["script.js"]: Creating...
+aws_s3_object.object["style.css"]: Creating...
+aws_s3_object.object["index.html"]: Creating...
+aws_s3_object.object["error.html"]: Creating...
+aws_cloudfront_distribution.s3_distribution: Creating...
+aws_s3_bucket_public_access_block.task_block: Creation complete after 1s [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+aws_s3_object.object["index.html"]: Creation complete after 1s [id=mylearning-tfawsdayfourteen-taskbucket-2026/index.html]
+aws_s3_object.object["script.js"]: Creation complete after 1s [id=mylearning-tfawsdayfourteen-taskbucket-2026/script.js]
+aws_s3_object.object["style.css"]: Creation complete after 2s [id=mylearning-tfawsdayfourteen-taskbucket-2026/style.css]
+aws_s3_object.object["error.html"]: Creation complete after 2s [id=mylearning-tfawsdayfourteen-taskbucket-2026/error.html]
+aws_cloudfront_distribution.s3_distribution: Still creating... [00m10s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [00m20s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [00m30s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [00m40s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [00m50s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [01m00s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [01m10s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [01m20s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [01m30s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [01m40s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [01m50s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [02m00s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [02m10s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [02m20s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [02m30s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still creating... [02m40s elapsed]
+aws_cloudfront_distribution.s3_distribution: Creation complete after 2m41s [id=E33ABL3ZKHKNF3]
+aws_s3_bucket_policy.allow_cloudfront: Creating...
+aws_s3_bucket_policy.allow_cloudfront: Creation complete after 2s [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+
+Apply complete! Resources: 10 added, 0 changed, 0 destroyed.
+
+

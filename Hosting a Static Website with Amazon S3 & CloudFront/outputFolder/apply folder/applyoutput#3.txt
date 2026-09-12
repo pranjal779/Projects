@@ -1,0 +1,157 @@
+after updating the resource "aws_cloudfront_distribution" "s3_distribution" 
+
+Planning failed. Terraform encountered an error while generating this plan.
+
+╷
+│ Error: Invalid template interpolation value
+│ 
+│   on main.tf line 108, in resource "aws_cloudfront_distribution" "s3_distribution":
+│  108:     target_origin_id = "S3-${aws_s3_bucket.taskbucket}"
+│     ├────────────────
+│     │ aws_s3_bucket.taskbucket is object with 30 attributes
+│ 
+│ Cannot include the given value in a string template: string required, but have object.
+╵
+
+ terraform apply
+aws_cloudfront_origin_access_control.origin: Refreshing state... [id=E4#@$@##@$@#LD]
+data.aws_region.current: Reading...
+aws_s3_bucket.taskbucket: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+data.aws_region.current: Read complete after 0s [id=us-east-1]
+aws_s3_bucket_public_access_block.task_block: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+aws_s3_object.object["Index.html"]: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026/Index.html]
+aws_s3_object.object["script.js"]: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026/script.js]
+aws_s3_object.object["style.css"]: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026/style.css]
+aws_cloudfront_distribution.s3_distribution: Refreshing state... [id=E1#@$@##@$@#68]
+aws_s3_bucket_policy.allow_cloudfront: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+
+Terraform used the selected providers to generate the following execution plan. Resource
+actions are indicated with the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # aws_cloudfront_distribution.s3_distribution will be updated in-place
+  ~ resource "aws_cloudfront_distribution" "s3_distribution" {
+        id                              = "E1#@$@##@$@#68"
+        tags                            = {
+            "Environment" = "production"
+        }
+        # (25 unchanged attributes hidden)
+
+      ~ default_cache_behavior {
+          ~ target_origin_id           = "s3-mylearning-tfawsdayfourteen-taskbucket-2026" -> "S3-mylearning-tfawsdayfourteen-taskbucket-2026"
+            # (15 unchanged attributes hidden)
+
+            # (2 unchanged blocks hidden)
+        }
+
+      - origin {
+          - connection_attempts         = 3 -> null
+          - connection_timeout          = 10 -> null
+          - domain_name                 = "mylearning-tfawsdayfourteen-taskbucket-2026.s3.us-east-1.amazonaws.com" -> null
+          - origin_access_control_id    = "E4M#@$@##@$@#LD" -> null
+          - origin_id                   = "s3-mylearning-tfawsdayfourteen-taskbucket-2026" -> null
+          - response_completion_timeout = 0 -> null
+            # (1 unchanged attribute hidden)
+        }
+      + origin {
+          + connection_attempts         = 3
+          + connection_timeout          = 10
+          + domain_name                 = "mylearning-tfawsdayfourteen-taskbucket-2026.s3.us-east-1.amazonaws.com"
+          + origin_access_control_id    = "E4MF0LS6N2ALD"
+          + origin_id                   = "S3-mylearning-tfawsdayfourteen-taskbucket-2026"
+          + response_completion_timeout = (known after apply)
+            # (1 unchanged attribute hidden)
+        }
+
+        # (2 unchanged blocks hidden)
+    }
+
+Plan: 0 to add, 1 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+---------------
+
+ terraform apply
+aws_cloudfront_origin_access_control.origin: Refreshing state... [id=E4#@$@##@$@#ALD]
+data.aws_region.current: Reading...
+aws_s3_bucket.taskbucket: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+data.aws_region.current: Read complete after 0s [id=us-east-1]
+aws_s3_bucket_public_access_block.task_block: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+aws_s3_object.object["Index.html"]: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026/Index.html]
+aws_s3_object.object["style.css"]: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026/style.css]
+aws_s3_object.object["script.js"]: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026/script.js]
+aws_cloudfront_distribution.s3_distribution: Refreshing state... [id=E11#@$@##@$@#68]
+aws_s3_bucket_policy.allow_cloudfront: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+
+Terraform used the selected providers to generate the following execution plan. Resource
+actions are indicated with the following symbols:
+  + create
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_s3_object.object["Index.html"] will be destroyed
+  # (because key ["Index.html"] is not in for_each map)
+  - resource "aws_s3_object" "object" {
+      - arn                           = "arn:aws:s3:::mylearning-tfawsdayfourteen-taskbucket-2026/Index.html" -> null
+      - bucket                        = "mylearning-tfawsdayfourteen-taskbucket-2026" -> null
+      - bucket_key_enabled            = false -> null
+      - content_type                  = "text/html" -> null
+      - etag                          = "84#@$@##@$@#6f76#@$@##@$@#dc1be4" -> null
+      - force_destroy                 = false -> null
+      - id                            = "mylearning-tfawsdayfourteen-taskbucket-2026/Index.html" -> null
+      - key                           = "Index.html" -> null
+      - metadata                      = {} -> null
+      - region                        = "us-east-1" -> null
+      - server_side_encryption        = "AES256" -> null
+      - source                        = "./www/Index.html" -> null
+      - storage_class                 = "STANDARD" -> null
+      - tags                          = {} -> null
+      - tags_all                      = {} -> null
+        # (14 unchanged attributes hidden)
+    }
+
+  # aws_s3_object.object["index.html"] will be created
+  + resource "aws_s3_object" "object" {
+      + acl                    = (known after apply)
+      + arn                    = (known after apply)
+      + bucket                 = "mylearning-tfawsdayfourteen-taskbucket-2026"
+      + bucket_key_enabled     = (known after apply)
+      + checksum_crc32         = (known after apply)
+      + checksum_crc32c        = (known after apply)
+      + checksum_crc64nvme     = (known after apply)
+      + checksum_sha1          = (known after apply)
+      + checksum_sha256        = (known after apply)
+      + content_type           = "text/html"
+      + etag                   = "84ce#@$@##@$@#770d#@$@##@$@#e4"
+      + force_destroy          = false
+      + id                     = (known after apply)
+      + key                    = "index.html"
+      + kms_key_id             = (known after apply)
+      + region                 = "us-east-1"
+      + server_side_encryption = (known after apply)
+      + source                 = "./www/index.html"
+      + storage_class          = (known after apply)
+      + tags_all               = (known after apply)
+      + version_id             = (known after apply)
+    }
+
+Plan: 1 to add, 0 to change, 1 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: 
+
+aws_s3_object.object["Index.html"]: Destroying... [id=mylearning-tfawsdayfourteen-taskbucket-2026/Index.html]
+aws_s3_object.object["index.html"]: Creating...
+aws_s3_object.object["Index.html"]: Destruction complete after 1s
+aws_s3_object.object["index.html"]: Creation complete after 1s [id=mylearning-tfawsdayfourteen-taskbucket-2026/index.html]
+
+Apply complete! Resources: 1 added, 0 changed, 1 destroyed.

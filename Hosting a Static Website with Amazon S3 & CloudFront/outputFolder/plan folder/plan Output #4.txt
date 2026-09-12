@@ -1,0 +1,77 @@
+ terraform plan
+aws_cloudfront_origin_access_control.origin: Refreshing state... [id=E4#@$@##@$@#LD]
+data.aws_region.current: Reading...
+aws_s3_bucket.taskbucket: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+data.aws_region.current: Read complete after 0s [id=us-east-1]
+aws_s3_bucket_public_access_block.task_block: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+aws_cloudfront_distribution.s3_distribution: Refreshing state... [id=E11#@$@##@$@#E68]
+aws_s3_object.object["script.js"]: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026/script.js]
+aws_s3_object.object["style.css"]: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026/style.css]
+aws_s3_object.object["Index.html"]: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026/Index.html]
+aws_s3_bucket_policy.allow_cloudfront: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+
+Terraform used the selected providers to generate the following execution plan. Resource
+actions are indicated with the following symbols:
+  + create
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_s3_object.object["Index.html"] will be destroyed
+  # (because key ["Index.html"] is not in for_each map)
+  - resource "aws_s3_object" "object" {
+      - arn                           = "arn:aws:s3:::mylearning-tfawsdayfourteen-taskbucket-2026/Index.html" -> null
+      - bucket                        = "mylearning-tfawsdayfourteen-taskbucket-2026" -> null
+      - bucket_key_enabled            = false -> null
+      - content_type                  = "text/html" -> null
+      - etag                          = "84ce5fc4#@$@##@$@#770dc1be4" -> null
+      - force_destroy                 = false -> null
+      - id                            = "mylearning-tfawsdayfourteen-taskbucket-2026/Index.html" -> null
+      - key                           = "Index.html" -> null
+      - metadata                      = {} -> null
+      - region                        = "us-east-1" -> null
+      - server_side_encryption        = "AES256" -> null
+      - source                        = "./www/Index.html" -> null
+      - storage_class                 = "STANDARD" -> null
+      - tags                          = {} -> null
+      - tags_all                      = {} -> null
+        # (14 unchanged attributes hidden)
+    }
+
+  # aws_s3_object.object["index.html"] will be created
+  + resource "aws_s3_object" "object" {
+      + acl                    = (known after apply)
+      + arn                    = (known after apply)
+      + bucket                 = "mylearning-tfawsdayfourteen-taskbucket-2026"
+      + bucket_key_enabled     = (known after apply)
+      + checksum_crc32         = (known after apply)
+      + checksum_crc32c        = (known after apply)
+      + checksum_crc64nvme     = (known after apply)
+      + checksum_sha1          = (known after apply)
+      + checksum_sha256        = (known after apply)
+      + content_type           = "text/html"
+      + etag                   = "84ce5fc#@$@##@$@#587#@$@##@$@#4"
+      + force_destroy          = false
+      + id                     = (known after apply)
+      + key                    = "index.html"
+      + kms_key_id             = (known after apply)
+      + region                 = "us-east-1"
+      + server_side_encryption = (known after apply)
+      + source                 = "./www/index.html"
+      + storage_class          = (known after apply)
+      + tags_all               = (known after apply)
+      + version_id             = (known after apply)
+    }
+
+Plan: 1 to add, 0 to change, 1 to destroy.
+
+───────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take
+exactly these actions if you run "terraform apply" now.
+
+   pwsh MEM: 81% | 11/13GB   11s 250ms  (base) 
+╭─ ♥ 15:41 |                Task 
+╰─ 
+
+

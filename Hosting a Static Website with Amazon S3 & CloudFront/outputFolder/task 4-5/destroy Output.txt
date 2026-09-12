@@ -1,0 +1,408 @@
+ terraform destroy --auto-approve
+data.aws_region.current: Reading...
+aws_cloudfront_origin_access_control.origin: Refreshing state... [id=EI######5J6ZAHKY]
+aws_s3_bucket.taskbucket: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+data.aws_region.current: Read complete after 0s [id=us-east-1]
+aws_cloudfront_response_headers_policy.security_headers: Refreshing state... [id=096179a8-5b03-4301-9be1-eff815f2c7ce]
+aws_s3_bucket_public_access_block.task_block: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+aws_s3_object.object["index.html"]: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026/index.html]
+aws_s3_object.object["style.css"]: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026/style.css]
+aws_s3_object.object["script.js"]: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026/script.js]
+aws_s3_object.object["error.html"]: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026/error.html]
+aws_cloudfront_distribution.s3_distribution: Refreshing state... [id=E33$$$$$$HKNF3]
+aws_s3_bucket_policy.allow_cloudfront: Refreshing state... [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_cloudfront_distribution.s3_distribution will be destroyed
+  - resource "aws_cloudfront_distribution" "s3_distribution" {
+      - aliases                         = [] -> null
+      - arn                             = "arn:aws:cloudfront::357#@$@#0231:distribution/E33ABL3ZKHKNF3" -> null
+      - caller_reference                = "terraform-2026060@@@@@@@@@00001" -> null
+      - comment                         = "Some comment" -> null
+      - default_root_object             = "index.html" -> null
+      - domain_name                     = "d675s4yo8p1rc.cloudfront.net" -> null
+      - enabled                         = true -> null
+      - etag                            = "E23#@$@#2F085DFQ" -> null
+      - hosted_zone_id                  = "Z2FDTNDATAQYW2" -> null
+      - http_version                    = "http2" -> null
+      - id                              = "E33#@$@##@$@#HKNF3" -> null
+      - in_progress_validation_batches  = 0 -> null
+      - is_ipv6_enabled                 = true -> null
+      - last_modified_time              = "2026-06-06 12:34:47.449 +0000 UTC" -> null
+      - logging_v1_enabled              = false -> null
+      - price_class                     = "PriceClass_100" -> null
+      - retain_on_delete                = false -> null
+      - staging                         = false -> null
+      - status                          = "Deployed" -> null
+      - tags                            = {
+          - "Environment" = "staging"
+        } -> null
+      - tags_all                        = {
+          - "Environment" = "staging"
+        } -> null
+      - trusted_key_groups              = [
+          - {
+              - enabled = false
+              - items   = []
+            },
+        ] -> null
+      - trusted_signers                 = [
+          - {
+              - enabled = false
+              - items   = []
+            },
+        ] -> null
+      - wait_for_deployment             = true -> null
+        # (3 unchanged attributes hidden)
+
+      - custom_error_response {
+          - error_caching_min_ttl = 10 -> null
+          - error_code            = 403 -> null
+          - response_code         = 403 -> null
+          - response_page_path    = "/error.html" -> null
+        }
+      - custom_error_response {
+          - error_caching_min_ttl = 10 -> null
+          - error_code            = 404 -> null
+          - response_code         = 404 -> null
+          - response_page_path    = "/error.html" -> null
+        }
+
+      - default_cache_behavior {
+          - allowed_methods            = [
+              - "GET",
+              - "HEAD",
+            ] -> null
+          - cached_methods             = [
+              - "GET",
+              - "HEAD",
+            ] -> null
+          - compress                   = false -> null
+          - default_ttl                = 3600 -> null
+          - max_ttl                    = 86400 -> null
+          - min_ttl                    = 0 -> null
+          - response_headers_policy_id = "096179a8-#@$@#-=-=15f2c7ce" -> null
+          - smooth_streaming           = false -> null
+          - target_origin_id           = "S3-mylearning-tfawsdayfourteen-taskbucket-2026" -> null
+          - trusted_key_groups         = [] -> null
+          - trusted_signers            = [] -> null
+          - viewer_protocol_policy     = "redirect-to-https" -> null
+            # (4 unchanged attributes hidden)
+
+          - forwarded_values {
+              - headers                 = [] -> null
+              - query_string            = false -> null
+              - query_string_cache_keys = [] -> null
+
+              - cookies {
+                  - forward           = "none" -> null
+                  - whitelisted_names = [] -> null
+                }
+            }
+
+          - grpc_config {
+              - enabled = false -> null
+            }
+        }
+
+      - origin {
+          - connection_attempts         = 3 -> null
+          - connection_timeout          = 10 -> null
+          - domain_name                 = "mylearning-tfawsdayfourteen-taskbucket-2026.s3.us-east-1.amazonaws.com" -> null
+          - origin_access_control_id    = "EIDVP5J6ZAHKY" -> null
+          - origin_id                   = "S3-mylearning-tfawsdayfourteen-taskbucket-2026" -> null
+          - response_completion_timeout = 0 -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - restrictions {
+          - geo_restriction {
+              - locations        = [] -> null
+              - restriction_type = "none" -> null
+            }
+        }
+
+      - viewer_certificate {
+          - cloudfront_default_certificate = true -> null
+          - minimum_protocol_version       = "TLSv1" -> null
+            # (3 unchanged attributes hidden)
+        }
+    }
+
+  # aws_cloudfront_origin_access_control.origin will be destroyed
+  - resource "aws_cloudfront_origin_access_control" "origin" {
+      - arn                               = "arn:aws:cloudfront::357#@$@#231:origin-access-control/EI#@$@#AHKY" -> null
+      - description                       = "Example Policy" -> null
+      - etag                              = "ETVPDKIKX0DER" -> null
+      - id                                = "EIDVP5J6ZAHKY" -> null
+      - name                              = "demo-origin-pranj-day14" -> null
+      - origin_access_control_origin_type = "s3" -> null
+      - signing_behavior                  = "always" -> null
+      - signing_protocol                  = "sigv4" -> null
+    }
+
+  # aws_cloudfront_response_headers_policy.security_headers will be destroyed
+  - resource "aws_cloudfront_response_headers_policy" "security_headers" {
+      - arn     = "arn:aws:cloudfront::357715920231:response-headers-policy/096179a8-5b03-4301-9be1-eff815f2c7ce" -> null
+      - etag    = "E2#@$@#=-=-=DFQ" -> null
+      - id      = "096179a8-5b03-4301-9be1-eff815f2c7ce" -> null
+      - name    = "day14-security-headers-policy" -> null
+        # (1 unchanged attribute hidden)
+
+      - security_headers_config {
+          - content_type_options {
+              - override = true -> null
+            }
+          - frame_options {
+              - frame_option = "DENY" -> null
+              - override     = true -> null
+            }
+          - referrer_policy {
+              - override        = true -> null
+              - referrer_policy = "same-origin" -> null
+            }
+          - strict_transport_security {
+              - access_control_max_age_sec = 31536000 -> null
+              - include_subdomains         = true -> null
+              - override                   = true -> null
+              - preload                    = false -> null
+            }
+          - xss_protection {
+              - mode_block = true -> null
+              - override   = true -> null
+              - protection = true -> null
+                # (1 unchanged attribute hidden)
+            }
+        }
+    }
+
+  # aws_s3_bucket.taskbucket will be destroyed
+  - resource "aws_s3_bucket" "taskbucket" {
+      - arn                         = "arn:aws:s3:::mylearning-tfawsdayfourteen-taskbucket-2026" -> null
+      - bucket                      = "mylearning-tfawsdayfourteen-taskbucket-2026" -> null
+      - bucket_domain_name          = "mylearning-tfawsdayfourteen-taskbucket-2026.s3.amazonaws.com" -> null
+      - bucket_namespace            = "global" -> null
+      - bucket_region               = "us-east-1" -> null
+      - bucket_regional_domain_name = "mylearning-tfawsdayfourteen-taskbucket-2026.s3.us-east-1.amazonaws.com" -> null
+      - force_destroy               = false -> null
+      - hosted_zone_id              = "Z3AQBSTGFYJSTF" -> null
+      - id                          = "mylearning-tfawsdayfourteen-taskbucket-2026" -> null
+      - object_lock_enabled         = false -> null
+      - policy                      = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "s3:GetObject"
+                      - Condition = {
+                          - StringEquals = {
+                              - "AWS:SourceArn" = "arn:aws:cloudfront::3#@$@##@$@#1:distribution/E3#@$@##@$@#KNF3"
+                            }
+                        }
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "cloudfront.amazonaws.com"
+                        }
+                      - Resource  = "arn:aws:s3:::mylearning-tfawsdayfourteen-taskbucket-2026/*"
+                      - Sid       = "AllowCloudFrontGetObject"
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - region                      = "us-east-1" -> null
+      - request_payer               = "BucketOwner" -> null
+      - tags                        = {} -> null
+      - tags_all                    = {} -> null
+        # (2 unchanged attributes hidden)
+
+      - grant {
+          - id          = "b6b0245b9#@$@#5291edad6247715bee4f4#@$@#ba7c64e#@$@#47b1d" -> null
+          - permissions = [
+              - "FULL_CONTROL",
+            ] -> null
+          - type        = "CanonicalUser" -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - server_side_encryption_configuration {
+          - rule {
+              - bucket_key_enabled = false -> null
+
+              - apply_server_side_encryption_by_default {
+                  - sse_algorithm     = "AES256" -> null
+                    # (1 unchanged attribute hidden)
+                }
+            }
+        }
+
+      - versioning {
+          - enabled    = false -> null
+          - mfa_delete = false -> null
+        }
+    }
+
+  # aws_s3_bucket_policy.allow_cloudfront will be destroyed
+  - resource "aws_s3_bucket_policy" "allow_cloudfront" {
+      - bucket = "mylearning-tfawsdayfourteen-taskbucket-2026" -> null
+      - id     = "mylearning-tfawsdayfourteen-taskbucket-2026" -> null
+      - policy = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "s3:GetObject"
+                      - Condition = {
+                          - StringEquals = {
+                              - "AWS:SourceArn" = "arn:aws:cloudfront::357#@$@#231:distribution/E3#@$@##@$@#F3"
+                            }
+                        }
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "cloudfront.amazonaws.com"
+                        }
+                      - Resource  = "arn:aws:s3:::mylearning-tfawsdayfourteen-taskbucket-2026/*"
+                      - Sid       = "AllowCloudFrontGetObject"
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - region = "us-east-1" -> null
+    }
+
+  # aws_s3_bucket_public_access_block.task_block will be destroyed
+  - resource "aws_s3_bucket_public_access_block" "task_block" {
+      - block_public_acls       = true -> null
+      - block_public_policy     = true -> null
+      - bucket                  = "mylearning-tfawsdayfourteen-taskbucket-2026" -> null
+      - id                      = "mylearning-tfawsdayfourteen-taskbucket-2026" -> null
+      - ignore_public_acls      = true -> null
+      - region                  = "us-east-1" -> null
+      - restrict_public_buckets = true -> null
+    }
+
+  # aws_s3_object.object["error.html"] will be destroyed
+  - resource "aws_s3_object" "object" {
+      - arn                           = "arn:aws:s3:::mylearning-tfawsdayfourteen-taskbucket-2026/error.html" -> null
+      - bucket                        = "mylearning-tfawsdayfourteen-taskbucket-2026" -> null
+      - bucket_key_enabled            = false -> null
+      - content_type                  = "text/html" -> null
+      - etag                          = "2f4c6cf65bc05c684e7264c70bafc1ca" -> null
+      - force_destroy                 = false -> null
+      - id                            = "mylearning-tfawsdayfourteen-taskbucket-2026/error.html" -> null
+      - key                           = "error.html" -> null
+      - metadata                      = {} -> null
+      - region                        = "us-east-1" -> null
+      - server_side_encryption        = "AES256" -> null
+      - source                        = "./www/error.html" -> null
+      - storage_class                 = "STANDARD" -> null
+      - tags                          = {} -> null
+      - tags_all                      = {} -> null
+        # (14 unchanged attributes hidden)
+    }
+
+  # aws_s3_object.object["index.html"] will be destroyed
+  - resource "aws_s3_object" "object" {
+      - arn                           = "arn:aws:s3:::mylearning-tfawsdayfourteen-taskbucket-2026/index.html" -> null
+      - bucket                        = "mylearning-tfawsdayfourteen-taskbucket-2026" -> null
+      - bucket_key_enabled            = false -> null
+      - content_type                  = "text/html" -> null
+      - etag                          = "84c#@$@##@$@#76077#@$@##@$@#c1be4" -> null
+      - force_destroy                 = false -> null
+      - id                            = "mylearning-tfawsdayfourteen-taskbucket-2026/index.html" -> null
+      - key                           = "index.html" -> null
+      - metadata                      = {} -> null
+      - region                        = "us-east-1" -> null
+      - server_side_encryption        = "AES256" -> null
+      - source                        = "./www/index.html" -> null
+      - storage_class                 = "STANDARD" -> null
+      - tags                          = {} -> null
+      - tags_all                      = {} -> null
+        # (14 unchanged attributes hidden)
+    }
+
+  # aws_s3_object.object["script.js"] will be destroyed
+  - resource "aws_s3_object" "object" {
+      - arn                           = "arn:aws:s3:::mylearning-tfawsdayfourteen-taskbucket-2026/script.js" -> null
+      - bucket                        = "mylearning-tfawsdayfourteen-taskbucket-2026" -> null
+      - bucket_key_enabled            = false -> null
+      - content_type                  = "application/javascript" -> null
+      - etag                          = "2ad#@$@##@$@#a46#@$@##@$@#d4#@$@##@$@#1" -> null
+      - force_destroy                 = false -> null
+      - id                            = "mylearning-tfawsdayfourteen-taskbucket-2026/script.js" -> null
+      - key                           = "script.js" -> null
+      - metadata                      = {} -> null
+      - region                        = "us-east-1" -> null
+      - server_side_encryption        = "AES256" -> null
+      - source                        = "./www/script.js" -> null
+      - storage_class                 = "STANDARD" -> null
+      - tags                          = {} -> null
+      - tags_all                      = {} -> null
+        # (14 unchanged attributes hidden)
+    }
+
+  # aws_s3_object.object["style.css"] will be destroyed
+  - resource "aws_s3_object" "object" {
+      - arn                           = "arn:aws:s3:::mylearning-tfawsdayfourteen-taskbucket-2026/style.css" -> null
+      - bucket                        = "mylearning-tfawsdayfourteen-taskbucket-2026" -> null
+      - bucket_key_enabled            = false -> null
+      - content_type                  = "text/css" -> null
+      - etag                          = "7c4#@$@##@$@#84053#@$@##@$@#5419a2d" -> null
+      - force_destroy                 = false -> null
+      - id                            = "mylearning-tfawsdayfourteen-taskbucket-2026/style.css" -> null
+      - key                           = "style.css" -> null
+      - metadata                      = {} -> null
+      - region                        = "us-east-1" -> null
+      - server_side_encryption        = "AES256" -> null
+      - source                        = "./www/style.css" -> null
+      - storage_class                 = "STANDARD" -> null
+      - tags                          = {} -> null
+      - tags_all                      = {} -> null
+        # (14 unchanged attributes hidden)
+    }
+
+Plan: 0 to add, 0 to change, 10 to destroy.
+aws_s3_bucket_policy.allow_cloudfront: Destroying... [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+aws_s3_object.object["error.html"]: Destroying... [id=mylearning-tfawsdayfourteen-taskbucket-2026/error.html]
+aws_s3_object.object["index.html"]: Destroying... [id=mylearning-tfawsdayfourteen-taskbucket-2026/index.html]
+aws_s3_object.object["style.css"]: Destroying... [id=mylearning-tfawsdayfourteen-taskbucket-2026/style.css]
+aws_s3_object.object["script.js"]: Destroying... [id=mylearning-tfawsdayfourteen-taskbucket-2026/script.js]
+aws_s3_object.object["style.css"]: Destruction complete after 1s
+aws_s3_object.object["index.html"]: Destruction complete after 1s
+aws_s3_object.object["script.js"]: Destruction complete after 1s
+aws_s3_object.object["error.html"]: Destruction complete after 1s
+aws_s3_bucket_policy.allow_cloudfront: Destruction complete after 1s
+aws_s3_bucket_public_access_block.task_block: Destroying... [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+aws_cloudfront_distribution.s3_distribution: Destroying... [id=E3#@$@##@$@#F3]
+aws_s3_bucket_public_access_block.task_block: Destruction complete after 1s
+aws_cloudfront_distribution.s3_distribution: Still destroying... [id=E3#@$@##@$@#NF3, 00m10s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still destroying... [id=E33#@$@##@$@#KNF3, 00m20s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still destroying... [id=E33#@$@##@$@#NF3, 00m30s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still destroying... [id=E3#@$@##@$@#NF3, 00m40s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still destroying... [id=E3#@$@##@$@#NF3, 00m50s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still destroying... [id=E3#@$@##@$@#NF3, 01m00s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still destroying... [id=E3#@$@##@$@#NF3, 01m10s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still destroying... [id=E3#@$@##@$@#NF3, 01m20s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still destroying... [id=E3#@$@##@$@#NF3, 01m30s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still destroying... [id=E3#@$@##@$@#NF3, 01m40s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still destroying... [id=E3#@$@##@$@#NF3, 01m50s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still destroying... [id=E3#@$@##@$@#NF3, 02m00s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still destroying... [id=E3#@$@##@$@#NF3, 02m10s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still destroying... [id=E3#@$@##@$@#NF3, 02m20s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still destroying... [id=E3#@$@##@$@#NF3, 02m30s elapsed]
+aws_cloudfront_distribution.s3_distribution: Still destroying... [id=E3#@$@##@$@#NF3, 02m40s elapsed]
+aws_cloudfront_distribution.s3_distribution: Destruction complete after 2m47s
+aws_cloudfront_origin_access_control.origin: Destroying... [id=EI#@$@##@$@#ZAHKY]
+aws_s3_bucket.taskbucket: Destroying... [id=mylearning-tfawsdayfourteen-taskbucket-2026]
+aws_cloudfront_response_headers_policy.security_headers: Destroying... [id=096179a8-5b03-4301-9be1-eff815f2c7ce]
+aws_cloudfront_origin_access_control.origin: Destruction complete after 0s
+aws_cloudfront_response_headers_policy.security_headers: Destruction complete after 0s
+aws_s3_bucket.taskbucket: Destruction complete after 1s
+
+Destroy complete! Resources: 10 destroyed.
+
+   pwsh MEM: 85% | 11/13GB   3m 4s 707ms  (base) 
+╭─ ♥ 18:25 |                Task 
