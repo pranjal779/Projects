@@ -1,0 +1,595 @@
+ terraform plan
+╷
+│ Error: Invalid resource type
+│ 
+│   on main.tf line 3, in resource "aws_iam_users" "users":
+│    3: resource "aws_iam_users" "users" {
+│ 
+│ The provider hashicorp/aws does not support resource
+│ type "aws_iam_users".
+│ 
+│ Did you intend to use the data source "aws_iam_users"?
+│ If so, declare this using a "data" block instead of a
+│ "resource" block.
+╵
+
+ terraform plan
+data.aws_caller_identity.day16: Reading...
+data.aws_caller_identity.day16: Read complete after 0s [id=[ ]]
+
+Terraform used the selected providers to generate the
+following execution plan. Resource actions are indicated
+with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_iam_user.users["Andy"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "abernard"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Andy Bernard"
+          + "JobTitle"    = "Sales Representative"
+        }
+      + tags_all      = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Andy Bernard"
+          + "JobTitle"    = "Sales Representative"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Angela"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "amartin"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Accounting"
+          + "DisplayName" = "Angela Martin"
+          + "JobTitle"    = "Accountant"
+        }
+      + tags_all      = {
+          + "Department"  = "Accounting"
+          + "DisplayName" = "Angela Martin"
+          + "JobTitle"    = "Accountant"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Charles"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "cminer"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "Charles Miner"
+          + "JobTitle"    = "Vice President of the Northeast Region"
+        }
+      + tags_all      = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "Charles Miner"
+          + "JobTitle"    = "Vice President of the Northeast Region"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Clark"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "cgreen"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Clark Green"
+          + "JobTitle"    = "Sales Representative"
+        }
+      + tags_all      = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Clark Green"
+          + "JobTitle"    = "Sales Representative"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Creed"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "cbratton"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Quality Assurance"
+          + "DisplayName" = "Creed Bratton"
+          + "JobTitle"    = "Quality Assurance"
+        }
+      + tags_all      = {
+          + "Department"  = "Quality Assurance"
+          + "DisplayName" = "Creed Bratton"
+          + "JobTitle"    = "Quality Assurance"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Darryl"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "dphilbin"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Warehouse"
+          + "DisplayName" = "Darryl Philbin"
+          + "JobTitle"    = "Warehouse Foreman"
+        }
+      + tags_all      = {
+          + "Department"  = "Warehouse"
+          + "DisplayName" = "Darryl Philbin"
+          + "JobTitle"    = "Warehouse Foreman"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["David"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "dwallace"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "David Wallace"
+          + "JobTitle"    = "CFO"
+        }
+      + tags_all      = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "David Wallace"
+          + "JobTitle"    = "CFO"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Dwight"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "dschrute"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Dwight Schrute"
+          + "JobTitle"    = "Assistant to the Regional Manager"
+        }
+      + tags_all      = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Dwight Schrute"
+          + "JobTitle"    = "Assistant to the Regional Manager"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Erin"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "ehannon"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Reception"
+          + "DisplayName" = "Erin Hannon"
+          + "JobTitle"    = "Receptionist"
+        }
+      + tags_all      = {
+          + "Department"  = "Reception"
+          + "DisplayName" = "Erin Hannon"
+          + "JobTitle"    = "Receptionist"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Gabe"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "glewis"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "Gabe Lewis"
+          + "JobTitle"    = "Coordinating Director of Emerging Regions"
+        }
+      + tags_all      = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "Gabe Lewis"
+          + "JobTitle"    = "Coordinating Director of Emerging Regions"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Holly"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "hflax"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "HR"
+          + "DisplayName" = "Holly Flax"
+          + "JobTitle"    = "HR Representative"
+        }
+      + tags_all      = {
+          + "Department"  = "HR"
+          + "DisplayName" = "Holly Flax"
+          + "JobTitle"    = "HR Representative"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Jan"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "jlevinson"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "Jan Levinson"
+          + "JobTitle"    = "Vice President of NortheastSales"
+        }
+      + tags_all      = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "Jan Levinson"
+          + "JobTitle"    = "Vice President of NortheastSales"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Jim"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "jhalpert"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Jim Halpert"
+          + "JobTitle"    = "Sales Representative"
+        }
+      + tags_all      = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Jim Halpert"
+          + "JobTitle"    = "Sales Representative"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Jo"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "jbennett"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "Jo Bennett"
+          + "JobTitle"    = "CEO of Sabre"
+        }
+      + tags_all      = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "Jo Bennett"
+          + "JobTitle"    = "CEO of Sabre"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Kelly"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "kkapoor"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Customer Service"
+          + "DisplayName" = "Kelly Kapoor"
+          + "JobTitle"    = "Customer Service Representative"
+        }
+      + tags_all      = {
+          + "Department"  = "Customer Service"
+          + "DisplayName" = "Kelly Kapoor"
+          + "JobTitle"    = "Customer Service Representative"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Kevin"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "kmalone"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Accounting"
+          + "DisplayName" = "Kevin Malone"
+          + "JobTitle"    = "Accountant"
+        }
+      + tags_all      = {
+          + "Department"  = "Accounting"
+          + "DisplayName" = "Kevin Malone"
+          + "JobTitle"    = "Accountant"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Meredith"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "mpalmer"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Supplier Relations"
+          + "DisplayName" = "Meredith Palmer"
+          + "JobTitle"    = "Supplier Relations"
+        }
+      + tags_all      = {
+          + "Department"  = "Supplier Relations"
+          + "DisplayName" = "Meredith Palmer"
+          + "JobTitle"    = "Supplier Relations"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Michael"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "mscott"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Education"
+          + "DisplayName" = "Michael Scott"
+          + "JobTitle"    = "Regional Manager"
+        }
+      + tags_all      = {
+          + "Department"  = "Education"
+          + "DisplayName" = "Michael Scott"
+          + "JobTitle"    = "Regional Manager"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Oscar"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "omartinez"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Accounting"
+          + "DisplayName" = "Oscar Martinez"
+          + "JobTitle"    = "Accountant"
+        }
+      + tags_all      = {
+          + "Department"  = "Accounting"
+          + "DisplayName" = "Oscar Martinez"
+          + "JobTitle"    = "Accountant"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Pam"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "pbeesly"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Reception"
+          + "DisplayName" = "Pam Beesly"
+          + "JobTitle"    = "Receptionist"
+        }
+      + tags_all      = {
+          + "Department"  = "Reception"
+          + "DisplayName" = "Pam Beesly"
+          + "JobTitle"    = "Receptionist"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Pete"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "pmiller"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Customer Service"
+          + "DisplayName" = "Pete Miller"
+          + "JobTitle"    = "Customer Service Representative"
+        }
+      + tags_all      = {
+          + "Department"  = "Customer Service"
+          + "DisplayName" = "Pete Miller"
+          + "JobTitle"    = "Customer Service Representative"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Phyllis"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "pvance"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Phyllis Vance"
+          + "JobTitle"    = "Sales Representative"
+        }
+      + tags_all      = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Phyllis Vance"
+          + "JobTitle"    = "Sales Representative"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Robert"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "rcalifornia"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "Robert California"
+          + "JobTitle"    = "CEO"
+        }
+      + tags_all      = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "Robert California"
+          + "JobTitle"    = "CEO"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Ryan"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "rhoward"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Temps"
+          + "DisplayName" = "Ryan Howard"
+          + "JobTitle"    = "Temp"
+        }
+      + tags_all      = {
+          + "Department"  = "Temps"
+          + "DisplayName" = "Ryan Howard"
+          + "JobTitle"    = "Temp"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Stanley"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "shudson"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Stanley Hudson"
+          + "JobTitle"    = "Sales Representative"
+        }
+      + tags_all      = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Stanley Hudson"
+          + "JobTitle"    = "Sales Representative"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Toby"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "tflenderson"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "HR"
+          + "DisplayName" = "Toby Flenderson"
+          + "JobTitle"    = "HR Representative"
+        }
+      + tags_all      = {
+          + "Department"  = "HR"
+          + "DisplayName" = "Toby Flenderson"
+          + "JobTitle"    = "HR Representative"
+        }
+      + unique_id     = (known after apply)
+    }
+
+Plan: 26 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + account_id = {
+      + account_id = "[ ]"
+      + arn        = "arn:aws:iam::[ ]:user/IAMjelloUSER"
+      + id         = "[ ]"
+      + user_id    = "[ ]"
+    }
+  + user_names = [
+      + "Michael Scott",
+      + "Dwight Schrute",
+      + "Jim Halpert",
+      + "Pam Beesly",
+      + "Ryan Howard",
+      + "Andy Bernard",
+      + "Robert California",
+      + "Stanley Hudson",
+      + "Kevin Malone",
+      + "Angela Martin",
+      + "Oscar Martinez",
+      + "Phyllis Vance",
+      + "Toby Flenderson",
+      + "Kelly Kapoor",
+      + "Darryl Philbin",
+      + "Creed Bratton",
+      + "Meredith Palmer",
+      + "Erin Hannon",
+      + "Gabe Lewis",
+      + "Jan Levinson",
+      + "David Wallace",
+      + "Holly Flax",
+      + "Charles Miner",
+      + "Jo Bennett",
+      + "Clark Green",
+      + "Pete Miller",
+    ]
+
+────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan,
+so Terraform can't guarantee to take exactly these
+actions if you run "terraform apply" now.
+
+   pwsh MEM: 77% | 10/13GB   5s 146ms  (base) 
+╭─ ♥ 17:31 |             Day16 
+╰─ 
+
+

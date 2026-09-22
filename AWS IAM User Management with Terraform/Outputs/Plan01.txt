@@ -1,0 +1,80 @@
+ terraform plan
+data.aws_caller_identity.day16: Reading...
+data.aws_caller_identity.day16: Read complete after 1s [id=[ ]]
+
+Changes to Outputs:
+  + account_id = {
+      + account_id = "[ ]"
+      + arn        = "arn:aws:iam::[ ]:user/IAMjelloUSER"
+      + id         = "[ ]"
+      + user_id    = "[ ]"
+    }
+
+You can apply this plan to save these new output values
+to the Terraform state, without changing any real
+infrastructure.
+
+────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan,
+so Terraform can't guarantee to take exactly these
+actions if you run "terraform apply" now.
+
+   pwsh MEM: 77% | 10/13GB   5s 407ms  (base) 
+╭─ ♥ 20:13 |             Day16 
+╰─ 
+
+
+ terraform plan
+data.aws_caller_identity.day16: Reading...
+data.aws_caller_identity.day16: Read complete after 0s [id=[ ]]
+
+Changes to Outputs:
+  + account_id = {
+      + account_id = "[ ]"
+      + arn        = "arn:aws:iam::[ ]:user/IAMjelloUSER"
+      + id         = "[ ]"
+      + user_id    = "[ ]"
+    }
+  + user_names = [
+      + "Michael Scott",
+      + "Dwight Schrute",
+      + "Jim Halpert",
+      + "Pam Beesly",
+      + "Ryan Howard",
+      + "Andy Bernard",
+      + "Robert California",
+      + "Stanley Hudson",
+      + "Kevin Malone",
+      + "Angela Martin",
+      + "Oscar Martinez",
+      + "Phyllis Vance",
+      + "Toby Flenderson",
+      + "Kelly Kapoor",
+      + "Darryl Philbin",
+      + "Creed Bratton",
+      + "Meredith Palmer",
+      + "Erin Hannon",
+      + "Gabe Lewis",
+      + "Jan Levinson",
+      + "David Wallace",
+      + "Holly Flax",
+      + "Charles Miner",
+      + "Jo Bennett",
+      + "Clark Green",
+      + "Pete Miller",
+    ]
+
+You can apply this plan to save these new output values
+to the Terraform state, without changing any real
+infrastructure.
+
+────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan,
+so Terraform can't guarantee to take exactly these
+actions if you run "terraform apply" now.
+
+   pwsh MEM: 73% | 10/13GB   6s 417ms  (base) 
+╭─ ♥ 21:31 |             Day16 
+╰─ 

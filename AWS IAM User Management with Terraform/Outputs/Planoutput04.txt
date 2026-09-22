@@ -1,0 +1,941 @@
+after 30:52
+
+ terraform plan
+╷
+│ Error: Reference to undeclared resource
+│ 
+│   on groups.tf line 42, in resource "aws_iam_group_membership" "engineers_members":
+│   42:   group = aws_iam_group.engineers.name
+│ 
+│ A managed resource "aws_iam_group" "engineers" has not been
+│ declared in the root module.
+╵
+
+   pwsh MEM: 80% | 11/13GB   5s 435ms  (base) 
+╭─ ♥ 19:25 |             Day16 
+╰─ 
+
+
+ terraform plan
+data.aws_caller_identity.day16: Reading...
+data.aws_caller_identity.day16: Read complete after 0s [id=[ ]]
+
+Terraform used the selected providers to generate the following
+execution plan. Resource actions are indicated with the
+following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_iam_group.education will be created
+  + resource "aws_iam_group" "education" {
+      + arn       = (known after apply)
+      + id        = (known after apply)
+      + name      = "Education"
+      + path      = "/groups/"
+      + unique_id = (known after apply)
+    }
+
+  # aws_iam_group.engineers will be created
+  + resource "aws_iam_group" "engineers" {
+      + arn       = (known after apply)
+      + id        = (known after apply)
+      + name      = "Engineers"
+      + path      = "/groups/"
+      + unique_id = (known after apply)
+    }
+
+  # aws_iam_group.managers will be created
+  + resource "aws_iam_group" "managers" {
+      + arn       = (known after apply)
+      + id        = (known after apply)
+      + name      = "Managers"
+      + path      = "/groups/"
+      + unique_id = (known after apply)
+    }
+
+  # aws_iam_group_membership.education_members will be created
+  + resource "aws_iam_group_membership" "education_members" {
+      + group = "Education"
+      + id    = (known after apply)
+      + name  = "education-group-membership"
+      + users = [
+          + "mscott",
+        ]
+    }
+
+  # aws_iam_group_membership.engineers_members will be created
+  + resource "aws_iam_group_membership" "engineers_members" {
+      + group = "Engineers"
+      + id    = (known after apply)
+      + name  = "engineers-group-membership"
+    }
+
+  # aws_iam_group_membership.managers_members will be created
+  + resource "aws_iam_group_membership" "managers_members" {
+      + group = "Managers"
+      + id    = (known after apply)
+      + name  = "managers-group-membership"
+      + users = [
+          + "dschrute",
+          + "jbennett",
+          + "mscott",
+          + "rcalifornia",
+        ]
+    }
+
+  # aws_iam_user.users["Andy"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "abernard"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Andy Bernard"
+          + "JobTitle"    = "Sales Representative"
+        }
+      + tags_all      = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Andy Bernard"
+          + "JobTitle"    = "Sales Representative"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Angela"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "amartin"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Accounting"
+          + "DisplayName" = "Angela Martin"
+          + "JobTitle"    = "Accountant"
+        }
+      + tags_all      = {
+          + "Department"  = "Accounting"
+          + "DisplayName" = "Angela Martin"
+          + "JobTitle"    = "Accountant"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Charles"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "cminer"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "Charles Miner"
+          + "JobTitle"    = "Vice President of the Northeast Region"
+        }
+      + tags_all      = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "Charles Miner"
+          + "JobTitle"    = "Vice President of the Northeast Region"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Clark"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "cgreen"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Clark Green"
+          + "JobTitle"    = "Sales Representative"
+        }
+      + tags_all      = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Clark Green"
+          + "JobTitle"    = "Sales Representative"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Creed"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "cbratton"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Quality Assurance"
+          + "DisplayName" = "Creed Bratton"
+          + "JobTitle"    = "Quality Assurance"
+        }
+      + tags_all      = {
+          + "Department"  = "Quality Assurance"
+          + "DisplayName" = "Creed Bratton"
+          + "JobTitle"    = "Quality Assurance"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Darryl"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "dphilbin"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Warehouse"
+          + "DisplayName" = "Darryl Philbin"
+          + "JobTitle"    = "Warehouse Foreman"
+        }
+      + tags_all      = {
+          + "Department"  = "Warehouse"
+          + "DisplayName" = "Darryl Philbin"
+          + "JobTitle"    = "Warehouse Foreman"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["David"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "dwallace"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "David Wallace"
+          + "JobTitle"    = "CFO"
+        }
+      + tags_all      = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "David Wallace"
+          + "JobTitle"    = "CFO"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Dwight"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "dschrute"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Dwight Schrute"
+          + "JobTitle"    = "Assistant to the Regional Manager"
+        }
+      + tags_all      = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Dwight Schrute"
+          + "JobTitle"    = "Assistant to the Regional Manager"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Erin"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "ehannon"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Reception"
+          + "DisplayName" = "Erin Hannon"
+          + "JobTitle"    = "Receptionist"
+        }
+      + tags_all      = {
+          + "Department"  = "Reception"
+          + "DisplayName" = "Erin Hannon"
+          + "JobTitle"    = "Receptionist"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Gabe"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "glewis"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "Gabe Lewis"
+          + "JobTitle"    = "Coordinating Director of Emerging Regions"
+        }
+      + tags_all      = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "Gabe Lewis"
+          + "JobTitle"    = "Coordinating Director of Emerging Regions"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Holly"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "hflax"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "HR"
+          + "DisplayName" = "Holly Flax"
+          + "JobTitle"    = "HR Representative"
+        }
+      + tags_all      = {
+          + "Department"  = "HR"
+          + "DisplayName" = "Holly Flax"
+          + "JobTitle"    = "HR Representative"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Jan"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "jlevinson"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "Jan Levinson"
+          + "JobTitle"    = "Vice President of Northeast Sales"
+        }
+      + tags_all      = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "Jan Levinson"
+          + "JobTitle"    = "Vice President of Northeast Sales"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Jim"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "jhalpert"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Jim Halpert"
+          + "JobTitle"    = "Sales Representative"
+        }
+      + tags_all      = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Jim Halpert"
+          + "JobTitle"    = "Sales Representative"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Jo"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "jbennett"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "Jo Bennett"
+          + "JobTitle"    = "CEO of Sabre"
+        }
+      + tags_all      = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "Jo Bennett"
+          + "JobTitle"    = "CEO of Sabre"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Kelly"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "kkapoor"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Customer Service"
+          + "DisplayName" = "Kelly Kapoor"
+          + "JobTitle"    = "Customer Service Representative"
+        }
+      + tags_all      = {
+          + "Department"  = "Customer Service"
+          + "DisplayName" = "Kelly Kapoor"
+          + "JobTitle"    = "Customer Service Representative"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Kevin"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "kmalone"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Accounting"
+          + "DisplayName" = "Kevin Malone"
+          + "JobTitle"    = "Accountant"
+        }
+      + tags_all      = {
+          + "Department"  = "Accounting"
+          + "DisplayName" = "Kevin Malone"
+          + "JobTitle"    = "Accountant"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Meredith"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "mpalmer"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Supplier Relations"
+          + "DisplayName" = "Meredith Palmer"
+          + "JobTitle"    = "Supplier Relations"
+        }
+      + tags_all      = {
+          + "Department"  = "Supplier Relations"
+          + "DisplayName" = "Meredith Palmer"
+          + "JobTitle"    = "Supplier Relations"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Michael"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "mscott"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Education"
+          + "DisplayName" = "Michael Scott"
+          + "JobTitle"    = "Regional Manager"
+        }
+      + tags_all      = {
+          + "Department"  = "Education"
+          + "DisplayName" = "Michael Scott"
+          + "JobTitle"    = "Regional Manager"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Oscar"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "omartinez"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Accounting"
+          + "DisplayName" = "Oscar Martinez"
+          + "JobTitle"    = "Accountant"
+        }
+      + tags_all      = {
+          + "Department"  = "Accounting"
+          + "DisplayName" = "Oscar Martinez"
+          + "JobTitle"    = "Accountant"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Pam"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "pbeesly"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Reception"
+          + "DisplayName" = "Pam Beesly"
+          + "JobTitle"    = "Receptionist"
+        }
+      + tags_all      = {
+          + "Department"  = "Reception"
+          + "DisplayName" = "Pam Beesly"
+          + "JobTitle"    = "Receptionist"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Pete"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "pmiller"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Customer Service"
+          + "DisplayName" = "Pete Miller"
+          + "JobTitle"    = "Customer Service Representative"
+        }
+      + tags_all      = {
+          + "Department"  = "Customer Service"
+          + "DisplayName" = "Pete Miller"
+          + "JobTitle"    = "Customer Service Representative"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Phyllis"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "pvance"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Phyllis Vance"
+          + "JobTitle"    = "Sales Representative"
+        }
+      + tags_all      = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Phyllis Vance"
+          + "JobTitle"    = "Sales Representative"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Robert"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "rcalifornia"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "Robert California"
+          + "JobTitle"    = "CEO"
+        }
+      + tags_all      = {
+          + "Department"  = "Corporate"
+          + "DisplayName" = "Robert California"
+          + "JobTitle"    = "CEO"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Ryan"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "rhoward"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Temps"
+          + "DisplayName" = "Ryan Howard"
+          + "JobTitle"    = "Temp"
+        }
+      + tags_all      = {
+          + "Department"  = "Temps"
+          + "DisplayName" = "Ryan Howard"
+          + "JobTitle"    = "Temp"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Stanley"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "shudson"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Stanley Hudson"
+          + "JobTitle"    = "Sales Representative"
+        }
+      + tags_all      = {
+          + "Department"  = "Sales"
+          + "DisplayName" = "Stanley Hudson"
+          + "JobTitle"    = "Sales Representative"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.users["Toby"] will be created
+  + resource "aws_iam_user" "users" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "tflenderson"
+      + path          = "/users/"
+      + tags          = {
+          + "Department"  = "HR"
+          + "DisplayName" = "Toby Flenderson"
+          + "JobTitle"    = "HR Representative"
+        }
+      + tags_all      = {
+          + "Department"  = "HR"
+          + "DisplayName" = "Toby Flenderson"
+          + "JobTitle"    = "HR Representative"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user_login_profile.users["Andy"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "abernard"
+    }
+
+  # aws_iam_user_login_profile.users["Angela"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "amartin"
+    }
+
+  # aws_iam_user_login_profile.users["Charles"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "cminer"
+    }
+
+  # aws_iam_user_login_profile.users["Clark"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "cgreen"
+    }
+
+  # aws_iam_user_login_profile.users["Creed"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "cbratton"
+    }
+
+  # aws_iam_user_login_profile.users["Darryl"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "dphilbin"
+    }
+
+  # aws_iam_user_login_profile.users["David"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "dwallace"
+    }
+
+  # aws_iam_user_login_profile.users["Dwight"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "dschrute"
+    }
+
+  # aws_iam_user_login_profile.users["Erin"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "ehannon"
+    }
+
+  # aws_iam_user_login_profile.users["Gabe"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "glewis"
+    }
+
+  # aws_iam_user_login_profile.users["Holly"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "hflax"
+    }
+
+  # aws_iam_user_login_profile.users["Jan"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "jlevinson"
+    }
+
+  # aws_iam_user_login_profile.users["Jim"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "jhalpert"
+    }
+
+  # aws_iam_user_login_profile.users["Jo"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "jbennett"
+    }
+
+  # aws_iam_user_login_profile.users["Kelly"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "kkapoor"
+    }
+
+  # aws_iam_user_login_profile.users["Kevin"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "kmalone"
+    }
+
+  # aws_iam_user_login_profile.users["Meredith"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "mpalmer"
+    }
+
+  # aws_iam_user_login_profile.users["Michael"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "mscott"
+    }
+
+  # aws_iam_user_login_profile.users["Oscar"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "omartinez"
+    }
+
+  # aws_iam_user_login_profile.users["Pam"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "pbeesly"
+    }
+
+  # aws_iam_user_login_profile.users["Pete"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "pmiller"
+    }
+
+  # aws_iam_user_login_profile.users["Phyllis"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "pvance"
+    }
+
+  # aws_iam_user_login_profile.users["Robert"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "rcalifornia"
+    }
+
+  # aws_iam_user_login_profile.users["Ryan"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "rhoward"
+    }
+
+  # aws_iam_user_login_profile.users["Stanley"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "shudson"
+    }
+
+  # aws_iam_user_login_profile.users["Toby"] will be created
+  + resource "aws_iam_user_login_profile" "users" {
+      + encrypted_password      = (known after apply)
+      + id                      = (known after apply)
+      + key_fingerprint         = (known after apply)
+      + password                = (sensitive value)
+      + password_length         = 20
+      + password_reset_required = true
+      + user                    = "tflenderson"
+    }
+
+Plan: 58 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + account_id     = {
+      + account_id = "[ ]"
+      + arn        = "arn:aws:iam::[ ]:user/IAMjelloUSER"
+      + id         = "[ ]"
+      + user_id    = "[ ]"
+    }
+  + user_names     = [
+      + "Michael Scott",
+      + "Dwight Schrute",
+      + "Jim Halpert",
+      + "Pam Beesly",
+      + "Ryan Howard",
+      + "Andy Bernard",
+      + "Robert California",
+      + "Stanley Hudson",
+      + "Kevin Malone",
+      + "Angela Martin",
+      + "Oscar Martinez",
+      + "Phyllis Vance",
+      + "Toby Flenderson",
+      + "Kelly Kapoor",
+      + "Darryl Philbin",
+      + "Creed Bratton",
+      + "Meredith Palmer",
+      + "Erin Hannon",
+      + "Gabe Lewis",
+      + "Jan Levinson",
+      + "David Wallace",
+      + "Holly Flax",
+      + "Charles Miner",
+      + "Jo Bennett",
+      + "Clark Green",
+      + "Pete Miller",
+    ]
+  + user_passwords = (sensitive value)
+
+───────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so
+Terraform can't guarantee to take exactly these actions if you
+run "terraform apply" now.
+
+   pwsh MEM: 82% | 11/13GB   6s 63ms  (base) 
+╭─ ♥ 19:38 |             Day16 
+╰─ 
+

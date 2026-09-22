@@ -1,0 +1,201 @@
+ terraform init
+Initializing the backend...
+╷
+│ Error: Terraform encountered problems during initialisation, including problems
+│ with the configuration, described below.
+│ 
+│ The Terraform configuration must be valid before initialization so that
+│ Terraform can determine which modules and providers need to be installed.
+│ 
+│ 
+╵
+╷
+│ Error: Invalid data resource name
+│ 
+│   on data.tf line 1, in data "awas_caller_identity" "":
+│    1: data "awas_caller_identity" "" {}
+│ 
+│ A name must start with a letter or underscore and may
+│ contain only letters, digits, underscores, and dashes.
+╵
+╷
+│ Error: Invalid data resource name
+│ 
+│   on data.tf line 1, in data "awas_caller_identity" "":
+│    1: data "awas_caller_identity" "" {}
+│ 
+│ A name must start with a letter or underscore and may
+│ contain only letters, digits, underscores, and dashes.
+╵
+
+   pwsh MEM: 88% | 12/13GB   504ms  (base) 
+╭─ ♥ 19:40 |             Day16 
+╰─ 
+
+
+ terraform init
+Initializing the backend...
+Initializing provider plugins...
+- Finding hashicorp/aws versions matching "~> 6.0"...
+- Finding latest version of hashicorp/awas...
+- Installing hashicorp/aws v6.52.0...
+- Installed hashicorp/aws v6.52.0 (signed by HashiCorp)
+╷
+│ Error: Failed to query available provider packages
+│ 
+│ Could not retrieve the list of available versions for
+│ provider hashicorp/awas: provider registry
+│ registry.terraform.io does not have a provider named
+│ registry.terraform.io/hashicorp/awas
+│ 
+│ All modules should specify their required_providers so
+│ that external consumers will get the correct providers
+│ when using a module. To see which modules are
+│ currently depending on hashicorp/awas, run the
+│ following command:
+│     terraform providers
+╵
+
+   pwsh MEM: 80% | 11/13GB   30s 700ms  (base) 
+╭─ ♥ 19:45 |             Day16 
+╰─ 
+
+
+ terraform init
+Initializing the backend...
+Initializing provider plugins...
+- Finding hashicorp/aws versions matching "~> 6.0"...
+- Finding latest version of hashicorp/awas...
+- Installing hashicorp/aws v6.52.0...
+- Installed hashicorp/aws v6.52.0 (signed by HashiCorp)
+╷
+│ Error: Failed to query available provider packages
+│ 
+│ Could not retrieve the list of available versions for
+│ provider hashicorp/awas: provider registry
+│ registry.terraform.io does not have a provider named
+│ registry.terraform.io/hashicorp/awas
+│ 
+│ All modules should specify their required_providers so
+│ that external consumers will get the correct providers
+│ when using a module. To see which modules are
+│ currently depending on hashicorp/awas, run the
+│ following command:
+│     terraform providers
+╵
+
+   pwsh MEM: 80% | 11/13GB   42s 354ms  (base) 
+╭─ ♥ 19:48 |             Day16 
+╰─ 
+
+╵
+ terraform providers
+
+Providers required by configuration:
+.
+├── provider[registry.terraform.io/hashicorp/awas]
+└── provider[registry.terraform.io/hashicorp/aws] ~> 6.0
+
+
+ Get-ChildItem -Recurse -Include *.tf | Select-String "awas"
+
+data.tf:1:data "awas_caller_identity" "day16" {}
+
+
+   pwsh MEM: 87% | 12/13GB   82ms  (base) 
+╭─ ♥ 20:02 |             Day16 
+
+ terraform plan
+╷
+│ Error: Reference to undeclared resource
+│ 
+│   on data.tf line 6, in output "account_id":
+│    6:   value = data.aws_caller_identity.account_id.day16
+│ 
+│ A data resource "aws_caller_identity" "account_id" has
+│ not been declared in the root module.
+╵
+╷
+│ Error: Reference to undeclared resource
+│ 
+│   on local.tf line 4, in locals:
+│    4:   users = csvdecode(file(users.csv))
+│ 
+│ A managed resource "users" "csv" has not been declared
+│ in the root module.
+╵
+
+   pwsh MEM: 85% | 11/13GB   3s 217ms  (base) 
+╭─ ♥ 20:07 |             Day16 
+╰─ 
+
+ terraform plan
+╷
+│ Error: Reference to undeclared resource
+│ 
+│   on data.tf line 6, in output "account_id":
+│    6:   value = data.aws_caller_identity.account_id.day16
+│ 
+│ A data resource "aws_caller_identity" "account_id" has
+│ not been declared in the root module.
+╵
+
+   pwsh MEM: 80% | 11/13GB   3s 46ms  (base) 
+╭─ ♥ 20:08 |             Day16 
+╰─ 
+
+# Changes:
+
+data "aws_caller_identity" "day16" {}
+
+
+## 8:53
+output "account_id" {
+  value = data.aws_caller_identity.day16
+}
+
+
+--------
+ terraform plan
+
+Planning failed. Terraform encountered an error while generating this plan.
+
+╷
+│ Error: Invalid provider configuration
+│ 
+│ Provider "registry.terraform.io/hashicorp/aws"
+│ requires explicit configuration. Add a provider block
+│ to the root module and configure the provider's
+│ required arguments as described in the provider
+│ documentation.
+│ 
+╵
+╷
+│ Error: invalid AWS Region: 
+│ 
+│   with provider["registry.terraform.io/hashicorp/aws"],
+│   on <empty> line 0:
+│   (source code not available)
+│ 
+╵
+
+   pwsh MEM: 81% | 11/13GB   3s 681ms  (base) 
+╭─ ♥ 20:10 |             Day16 
+╰─ 
+
+changes:
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 6.0"
+    }
+  }
+}
+
+# Configure the AWS provider
+provider "aws" {
+  region = "us-east-1"
+}
+1st successful plan out at the starting in Plan01.txt
+---------------------

@@ -1,0 +1,77 @@
+ terraform plan | grep -i "will be created"
+grep: The term 'grep' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+
+[General Feedback]
+  The most similar commands are:
+    ➤ gres
+
+ terraform plan | Select-String "will be created"
+
+  # aws_iam_group.education will be created
+  # aws_iam_group.engineers will be created
+  # aws_iam_group.managers will be created
+  # aws_iam_group_membership.education_members will be created
+  # aws_iam_group_membership.engineers_members will be created
+  # aws_iam_group_membership.managers_members will be created
+  # aws_iam_user.users["Andy"] will be created
+  # aws_iam_user.users["Angela"] will be created
+  # aws_iam_user.users["Charles"] will be created
+  # aws_iam_user.users["Clark"] will be created
+  # aws_iam_user.users["Creed"] will be created
+  # aws_iam_user.users["Darryl"] will be created
+  # aws_iam_user.users["David"] will be created
+  # aws_iam_user.users["Dwight"] will be created
+  # aws_iam_user.users["Erin"] will be created
+  # aws_iam_user.users["Gabe"] will be created
+  # aws_iam_user.users["Holly"] will be created
+  # aws_iam_user.users["Jan"] will be created
+  # aws_iam_user.users["Jim"] will be created
+  # aws_iam_user.users["Jo"] will be created
+  # aws_iam_user.users["Kelly"] will be created
+  # aws_iam_user.users["Kevin"] will be created
+  # aws_iam_user.users["Meredith"] will be created
+  # aws_iam_user.users["Michael"] will be created
+  # aws_iam_user.users["Oscar"] will be created
+  # aws_iam_user.users["Pam"] will be created
+  # aws_iam_user.users["Pete"] will be created
+  # aws_iam_user.users["Phyllis"] will be created
+  # aws_iam_user.users["Robert"] will be created
+  # aws_iam_user.users["Ryan"] will be created
+  # aws_iam_user.users["Stanley"] will be created
+  # aws_iam_user.users["Toby"] will be created
+  # aws_iam_user_login_profile.users["Andy"] will be created
+  # aws_iam_user_login_profile.users["Angela"] will be created
+  # aws_iam_user_login_profile.users["Charles"] will be created
+  # aws_iam_user_login_profile.users["Clark"] will be created
+  # aws_iam_user_login_profile.users["Creed"] will be created
+  # aws_iam_user_login_profile.users["Darryl"] will be created
+  # aws_iam_user_login_profile.users["David"] will be created
+  # aws_iam_user_login_profile.users["Dwight"] will be created
+  # aws_iam_user_login_profile.users["Erin"] will be created
+  # aws_iam_user_login_profile.users["Gabe"] will be created
+  # aws_iam_user_login_profile.users["Holly"] will be created
+  # aws_iam_user_login_profile.users["Jan"] will be created
+  # aws_iam_user_login_profile.users["Jim"] will be created
+  # aws_iam_user_login_profile.users["Jo"] will be created
+  # aws_iam_user_login_profile.users["Kelly"] will be created
+  # aws_iam_user_login_profile.users["Kevin"] will be created
+  # aws_iam_user_login_profile.users["Meredith"] will be 
+created
+  # aws_iam_user_login_profile.users["Michael"] will be created
+  # aws_iam_user_login_profile.users["Oscar"] will be created
+  # aws_iam_user_login_profile.users["Pam"] will be created
+  # aws_iam_user_login_profile.users["Pete"] will be created
+  # aws_iam_user_login_profile.users["Phyllis"] will be created
+  # aws_iam_user_login_profile.users["Robert"] will be created
+  # aws_iam_user_login_profile.users["Ryan"] will be created
+  # aws_iam_user_login_profile.users["Stanley"] will be created
+  # aws_iam_user_login_profile.users["Toby"] will be created
+
+
+   pwsh MEM: 82% | 11/13GB   5s 180ms  (base) 
+╭─ ♥ 19:42 |             Day16 
+╰─ 
+
+
+
