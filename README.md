@@ -1,6 +1,8 @@
 # Projects
 My Projects
 
+[Terraform Custom Modules for Amazon EKS: Networking, IAM, and Security](https://github.com/pranjal779/30DaysOfAWSTerraform/tree/main/Day20/Task%20Practice)
+
 [Hosting a Static Website with Amazon S3 & CloudFront](https://github.com/pranjal779/30DaysOfAWSTerraform/tree/main/Day14/Task)
 
 [Multi-Region VPC Peering with Terraform](https://github.com/pranjal779/30DaysOfAWSTerraform/tree/main/Day15/TaskCode)
