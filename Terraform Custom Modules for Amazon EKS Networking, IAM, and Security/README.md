@@ -168,12 +168,8 @@ When leveraging certificates[0], you can access detailed information about the r
 * Proxy Issues: If your Terraform setup runs behind an enterprise firewall or private network proxy, the data fetch might time out. You can configure a proxy block directly inside the provider "tls" {} block. [2] 
 * Invalid index Error: If you upgrade or downgrade across the v3.x / v4.x barrier without adjusting data.tls_certificate.example.sha1_fingerprint vs data.tls_certificate.example.certificates[0].sha1_fingerprint, your code will fail to compile. [5] 
 
-If you want, tell me:
-
 * What cloud platform or service (AWS, GitHub, EKS, etc.) you are integrating with.
 * What provider version your infrastructure codebase currently targets.
-
-I can write out a complete, copy-pasteable OIDC or IAM resource block tailored to your exact use case.
 
 [1] [https://registry.terraform.io](https://registry.terraform.io/providers/hashicorp/tls/3.4.0/docs/data-sources/certificate)
 [2] [https://registry.terraform.io](https://registry.terraform.io/providers/hashicorp/tls/latest/docs)
