@@ -1,3 +1,61 @@
+# Modular Amazon EKS Infrastructure with Terraform
+
+## Project Overview
+
+This project explores how to provision and organize AWS infrastructure for Amazon EKS using reusable custom Terraform modules. It was developed as part of the **30 Days of AWS Terraform** challenge.
+
+The infrastructure is organized into four modules:
+
+- **VPC:** Creates networking components, including public and private subnets across three Availability Zones, Internet Gateway, NAT Gateway, and route tables.
+- **IAM:** Defines separate IAM roles and policy attachments for the EKS control plane and worker nodes.
+- **EKS:** Configures the EKS cluster, managed node groups, security groups, encryption, CloudWatch logging, EKS add-ons, and OIDC integration for IRSA.
+- **Secrets Manager (optional):** Supports storing database credentials, API keys, and application configuration secrets.
+
+## Architecture
+
+The root Terraform module coordinates the child modules and passes values between them using module inputs and outputs.
+
+```mermaid
+flowchart TB
+    ROOT["Terraform Root Module"]
+
+    ROOT --> VPC["VPC Module"]
+    ROOT --> IAM["IAM Module"]
+    ROOT --> EKS["EKS Module"]
+    ROOT --> SM["Optional Secrets Manager"]
+
+    VPC --> NET["VPC, Subnets, Gateways<br/>and Route Tables"]
+    IAM --> ROLES["Cluster and Worker IAM Roles"]
+
+    NET -->|"VPC ID and Subnet IDs"| EKS
+    ROLES -->|"IAM Role ARNs"| EKS
+
+    EKS --> CLUSTER["EKS Control Plane"]
+    EKS --> NODES["Managed Node Groups"]
+    EKS --> SECURITY["Security, Encryption<br/>and Logging"]
+    EKS --> ADDONS["EKS Add-ons and OIDC"]
+
+    SM --> SECRETS["Application Secrets"]
+```
+
+## Key Learning Outcomes
+
+- Organizing infrastructure into custom Terraform modules.
+- Passing configuration through input variables and exposing values through outputs.
+- Understanding dependencies between networking, IAM, and EKS resources.
+- Configuring multi-AZ networking and private worker-node subnets.
+- Exploring Kubernetes infrastructure, encryption, logging, and workload identity integration.
+
+## Project Notes
+
+This is a hands-on infrastructure learning project. The configuration illustrates the intended architecture; deployment and production readiness should be verified separately.
+
+---
+
+## Documentation and Learning References
+
+The references below are retained for future practice, troubleshooting, and deeper understanding of the Terraform resources and AWS services used in this project.
+
 [Amazon EKS cluster IAM role](https://docs.aws.amazon.com/en_en/eks/latest/userguide/cluster-iam-role.html?utm_source=chatgpt.com)
 
 [Amazon Elastic Kubernetes Service Documentation](https://docs.aws.amazon.com/eks/?icmpid=docs_homepage_containers)
