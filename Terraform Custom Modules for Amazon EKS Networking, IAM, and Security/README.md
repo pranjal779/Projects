@@ -2,7 +2,10 @@
 
 ## Project Overview
 
-This project explores how to provision and organize AWS infrastructure for Amazon EKS using reusable custom Terraform modules. It was developed as part of the **30 Days of AWS Terraform** challenge.
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/51241e3f-ca8b-4ac4-b135-bcbdceaf3e97" />
+
+
+This project explores how to provision and organize AWS infrastructure for Amazon EKS using reusable custom Terraform modules. It was developed as part of the **[30 Days of AWS Terraform](https://youtu.be/a_j6Gq-KtxE?si=MI73uW_yn8LaIl1r)** challenge.
 
 The infrastructure is organized into four modules:
 
